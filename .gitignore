@@ -1,0 +1,12 @@
+#STS
+.project
+.settings/
+
+#bootstrap
+bootstrap/.classpath
+bootstrap/target/
+
+#rest-adapter
+rest-adapter/.classpath
+rest-adapter/.factorypath
+rest-adapter/target/
