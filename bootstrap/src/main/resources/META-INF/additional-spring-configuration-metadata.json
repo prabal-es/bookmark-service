@@ -1,0 +1,57 @@
+{"properties": [
+  {
+    "name": "info.id",
+    "type": "java.lang.String",
+    "description": "A description for 'info.id'"
+  },
+  {
+    "name": "info.version",
+    "type": "java.lang.String",
+    "description": "A description for 'info.version'"
+  },
+  {
+    "name": "springdoc.swagger-ui.info.title",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.swagger-ui.info.title'"
+  },
+  {
+    "name": "springdoc.swagger-ui.info.description",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.swagger-ui.info.description'"
+  },
+  {
+    "name": "springdoc.swagger-ui.info.version",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.swagger-ui.info.version'"
+  },
+  {
+    "name": "springdoc.swagger-ui.info.licenseUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.swagger-ui.info.licenseUrl'"
+  },
+  {
+    "name": "springdoc.swagger-ui.info.license",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.swagger-ui.info.license'"
+  },
+  {
+    "name": "springdoc.swagger-ui.info.termsOfServiceUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.swagger-ui.info.termsOfServiceUrl'"
+  },
+  {
+    "name": "springdoc.swagger-ui.info.contactName",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.swagger-ui.info.contactName'"
+  },
+  {
+    "name": "springdoc.swagger-ui.info.contactUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.swagger-ui.info.contactUrl'"
+  },
+  {
+    "name": "springdoc.swagger-ui.info.contactEmail",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.swagger-ui.info.contactEmail'"
+  }
+]}

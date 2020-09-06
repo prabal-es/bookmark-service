@@ -1,0 +1,29 @@
+info:
+  id: bookmark-service
+  version: v1
+spring:
+  application:
+    name: ${info.id}
+    
+springdoc:
+  api-docs:    path: /api/v1/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    display-request-duration: true
+    groups-order: DESC
+    info:
+      title: BOOKMARK SERVICE
+      description: TEST description
+      version: ${info.version}
+      termsOfServiceUrl: http://swagger.io/terms
+      license: Apache 2.0
+      licenseUrl: http://springdoc.org
+      contactName: Prabal Srivastava
+      contactUrl: https://in.linkedin.com/in/prabal9
+      contactEmail: prabal9@live.com
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG

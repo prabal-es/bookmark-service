@@ -1,6 +1,7 @@
 #STS
 .project
 .settings/
+bootstrap/.factorypath
 
 #bootstrap
 bootstrap/.classpath
