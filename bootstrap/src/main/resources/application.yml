@@ -4,7 +4,19 @@ info:
 spring:
   application:
     name: ${info.id}
-    
+
+security:
+  oauth2:
+    client:
+       clientId: e6e63b4afcffcf90668e
+       clientSecret: 81796a0b20847749515b20ef4593ef0a86436462
+       accessTokenUri: https://github.com/login/oauth/access_token
+       userAuthorizationUri: https://github.com/login/oauth/authorize
+       clientAuthenticationScheme: form
+    resource:
+      user-info-uri: https://api.github.com/user
+      prefer-token-info: true 
+
 springdoc:
   api-docs:    path: /api/v1/api-docs
   swagger-ui:
