@@ -18,7 +18,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 //@EnableOAuth2Sso
 @RestController
 @RequestMapping("/api/v1/hello")
-public class Hello {
+public class HelloController {
 
 	
 	@GetMapping

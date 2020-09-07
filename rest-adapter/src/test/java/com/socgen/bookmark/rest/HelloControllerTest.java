@@ -11,14 +11,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-@WebMvcTest(value = Hello.class)
+@WebMvcTest(value = HelloController.class)
 @AutoConfigureMockMvc(addFilters = false)
-public class HelloTest {
+public class HelloControllerTest {
 
 	private MockMvc mockMvc;
 
 	@Autowired
-	public HelloTest(final MockMvc mockMvc) {
+	public HelloControllerTest(final MockMvc mockMvc) {
 		this.mockMvc = mockMvc;
 	}
 

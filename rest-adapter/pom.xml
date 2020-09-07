@@ -4,11 +4,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.socgen</groupId>
+		<groupId>com.socgen.bookmark</groupId>
 		<artifactId>bookmark-service</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.socgen.bookmark</groupId>
 	<artifactId>rest-adapter</artifactId>
 	<name>rest-adapter</name>
 	<description>Demo project for Spring Boot</description>
