@@ -17,13 +17,13 @@ public class HelloControllerIntegrationTest {
 
 	@Test
 	public void helloWorldTest() {
-		this.webClient.get().uri("/api/v1/hello").exchange().expectStatus().isOk().expectBody(String.class)
+		webClient.get().uri("/api/v1/hello").exchange().expectStatus().isOk().expectBody(String.class)
 				.isEqualTo("hello world!!");
 	}
 
 	@Test
 	public void helloUniverseTest() {
-		this.webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/hello").queryParam("test", "Universe").build())
+		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/hello").queryParam("test", "Universe").build())
 				.exchange().expectStatus().isOk().expectBody(String.class).isEqualTo("hello Universe");
 	}
 }

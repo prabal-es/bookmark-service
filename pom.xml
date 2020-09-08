@@ -6,11 +6,48 @@
 
 	<groupId>com.socgen.bookmark</groupId>
 	<artifactId>bookmark-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${revision}</version>
 
 	<name>bookmark</name>
+	<description>In engineering and its various subdisciplines, acceptance testing is a test conducted to determine if the requirements of a specification or contract are met.</description>
+	<inceptionYear>2020</inceptionYear>
+
+
+	<organization>
+		<name>Société Générale</name>
+		<url>https://www.societegenerale.com/en/home</url>
+	</organization>
+	<url>https://www.prabalhub.com/</url>
+
+	<scm>
+		<url>scm:git:https://github.com/SocieteGeneraleES/bookmark-service.git</url>
+		<developerConnection>scm:git:https://github.com/SocieteGeneraleES/bookmark-service.git</developerConnection>
+		<tag>master</tag>
+		<connection>https://github.com/SocieteGeneraleES/bookmark-service/tree/${project.scm.tag}</connection>
+	</scm>
+
+	<issueManagement>
+		<system>clickup</system>
+		<url>https://app.clickup.com/3319214/v/l/359de-18</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>https://www.prabalhub.com/</url>
+	</ciManagement>
+
+	<packaging>pom</packaging>
+	<modules>
+		<module>domain-api</module>
+		<module>domain</module>
+		<module>jpa-adapter</module>
+		<module>rest-adapter</module>
+		<module>bootstrap</module>
+		<module>acceptance-test</module>
+	</modules>
 
 	<properties>
+		<revision>0.0.1-SNAPSHOT</revision>
 		<java.version>11</java.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
@@ -19,6 +56,9 @@
 		<lombok.version>1.18.12</lombok.version>
 		<spring.version>5.3.4.RELEASE</spring.version>
 		<oauth2.version>2.2.4.RELEASE</oauth2.version>
+		<jackson.version>2.11.2</jackson.version>
+		<h2.version>1.4.200</h2.version>
+		<liquibase.version>3.8.7</liquibase.version>
 	</properties>
 
 	<dependencyManagement>
@@ -30,9 +70,25 @@
 			</dependency>
 			<dependency>
 				<groupId>com.socgen.bookmark</groupId>
+				<artifactId>domain-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.socgen.bookmark</groupId>
 				<artifactId>rest-adapter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.socgen.bookmark</groupId>
+				<artifactId>domain</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.socgen.bookmark</groupId>
+				<artifactId>jpa-adapter</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-actuator</artifactId>
@@ -69,7 +125,26 @@
 				<version>${lombok.version}</version>
 				<optional>true</optional>
 			</dependency>
-
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-jpa</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>${h2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-core</artifactId>
+				<version>${liquibase.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-test</artifactId>
@@ -96,14 +171,4 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-	<packaging>pom</packaging>
-	<modules>
-		<module>domain-api</module>
-		<module>domain</module>
-		<module>jpa-adapter</module>
-		<module>rest-adapter</module>
-		<module>bootstrap</module>
-		<module>acceptance-test</module>
-	</modules>
 </project>

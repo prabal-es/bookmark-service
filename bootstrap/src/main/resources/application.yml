@@ -4,7 +4,20 @@ info:
 spring:
   application:
     name: ${info.id}
-
+  h2:
+    console:      enabled: true      path: /h2-console
+  datasource:    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:bookmarkDb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: null
+    driver-class-name: org.h2.Driver
+  jpa:
+    properties:      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        generate-ddl: true
+  liquibase:    enabled: true
+    change-log: classpath:/db/changelog/master.yml    
+      
 security:
   oauth2:
     client:

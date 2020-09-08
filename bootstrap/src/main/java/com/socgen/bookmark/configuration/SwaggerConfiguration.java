@@ -43,8 +43,8 @@ public class SwaggerConfiguration {
 
 	@Bean
 	public GroupedOpenApi helloGorupOpenApi() {
-		String[] paths = { "/**/hello**" };
-		return GroupedOpenApi.builder().setGroup("Hello").pathsToMatch(paths).build();
+		String[] paths = { "/**/companies**" };
+		return GroupedOpenApi.builder().setGroup("Company").pathsToMatch(paths).build();
 	}
 	
 	@Bean

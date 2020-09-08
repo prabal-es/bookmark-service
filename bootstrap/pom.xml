@@ -5,9 +5,11 @@
 	<parent>
 		<groupId>com.socgen.bookmark</groupId>
 		<artifactId>bookmark-service</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
+	
 	<artifactId>bootstrap</artifactId>
+
 	<dependencies>
 		<!-- left adapter -->
 		<dependency>
@@ -15,10 +17,14 @@
 			<artifactId>rest-adapter</artifactId>
 		</dependency>
 		<!-- domain -->
-
+		<dependency>
+			<groupId>com.socgen.bookmark</groupId>
+			<artifactId>domain</artifactId>
+		</dependency>
 		<!-- right adapter jpa -->
-
-
-
+		<dependency>
+			<groupId>com.socgen.bookmark</groupId>
+			<artifactId>jpa-adapter</artifactId>
+		</dependency>
 	</dependencies>
 </project>

@@ -6,13 +6,11 @@
 	<parent>
 		<artifactId>bookmark-service</artifactId>
 		<groupId>com.socgen.bookmark</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>acceptance-test</artifactId>
 
-	<name>acceptance-test</name>
-	<description>A simple acceptance-test.</description>
 	<dependencies>
 		<dependency>
 			<groupId>com.socgen.bookmark</groupId>
@@ -30,5 +28,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 </project>
