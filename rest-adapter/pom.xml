@@ -6,11 +6,10 @@
 	<parent>
 		<groupId>com.socgen.bookmark</groupId>
 		<artifactId>bookmark-service</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
+	
 	<artifactId>rest-adapter</artifactId>
-	<name>rest-adapter</name>
-	<description>Demo project for Spring Boot</description>
 
 	<dependencies>
 		<dependency>
