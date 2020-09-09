@@ -1,0 +1,18 @@
+databaseChangeLog:
+- changeSet:
+    id: 1
+    author: Prabal Srivastava
+    logicalFilePath: release-01-01__t_company_table.sql
+    context: Company
+    labels: InitialCommit
+    comment: Initial changes for company table
+    changes:
+    - sqlFile:
+        path: ./01__t_company_table.sql
+        relativeToChangelogFile: true
+    - tagDatabase:
+        tag: 0.0.1
+    rollback:
+    - sqlFile:
+        path: rollback/01__t_company_table.sql
+        relativeToChangelogFile: true

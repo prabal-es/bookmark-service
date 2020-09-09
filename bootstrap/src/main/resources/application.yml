@@ -1,0 +1,54 @@
+info:
+  id: bookmark-service
+  version: v1
+spring:
+  application:
+    name: ${info.id}
+  h2:
+    console:      enabled: true      path: /h2-console
+  datasource:    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:bookmarkDb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: null
+    driver-class-name: org.h2.Driver
+  jpa:
+    properties:      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        generate-ddl: true
+  liquibase:    enabled: true
+    change-log: classpath:/db/changelog/master.yml    
+      
+security:
+  oauth2:
+    client:
+       clientId: e6e63b4afcffcf90668e
+       clientSecret: 81796a0b20847749515b20ef4593ef0a86436462
+       accessTokenUri: https://github.com/login/oauth/access_token
+       userAuthorizationUri: https://github.com/login/oauth/authorize
+       clientAuthenticationScheme: form
+    resource:
+      user-info-uri: https://api.github.com/user
+      prefer-token-info: true 
+
+springdoc:
+  api-docs:    path: /api/v1/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    display-request-duration: true
+    groups-order: DESC
+    info:
+      title: BOOKMARK SERVICE
+      description: TEST description
+      version: ${info.version}
+      termsOfServiceUrl: http://swagger.io/terms
+      license: Apache 2.0
+      licenseUrl: http://springdoc.org
+      contactName: Prabal Srivastava
+      contactUrl: https://in.linkedin.com/in/prabal9
+      contactEmail: prabal9@live.com
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
