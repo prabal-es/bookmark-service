@@ -5,9 +5,9 @@
 	<parent>
 		<groupId>com.socgen.bookmark</groupId>
 		<artifactId>bookmark-service</artifactId>
-		<version>${revision}</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
 	<artifactId>bootstrap</artifactId>
 
 	<dependencies>
@@ -27,4 +27,23 @@
 			<artifactId>jpa-adapter</artifactId>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<classifier>exec</classifier>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

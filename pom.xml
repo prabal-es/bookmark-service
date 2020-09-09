@@ -6,7 +6,7 @@
 
 	<groupId>com.socgen.bookmark</groupId>
 	<artifactId>bookmark-service</artifactId>
-	<version>${revision}</version>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<name>bookmark</name>
 	<description>In engineering and its various subdisciplines, acceptance testing is a test conducted to determine if the requirements of a specification or contract are met.</description>
@@ -47,7 +47,6 @@
 	</modules>
 
 	<properties>
-		<revision>0.0.1-SNAPSHOT</revision>
 		<java.version>11</java.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
@@ -59,6 +58,7 @@
 		<jackson.version>2.11.2</jackson.version>
 		<h2.version>1.4.200</h2.version>
 		<liquibase.version>3.8.7</liquibase.version>
+		<spring-boot-maven-plugin.version>1.1.2.RELEASE</spring-boot-maven-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -170,6 +170,23 @@
 				<scope>test</scope>
 			</dependency>
 
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot-maven-plugin.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
+		</plugins>
+	</build>
 </project>

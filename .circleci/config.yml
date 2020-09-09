@@ -29,6 +29,3 @@ workflows:
   workflow:
     jobs:
     - build
-      filters:
-        branches:
-          only: master, development

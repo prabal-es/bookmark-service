@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>bookmark-service</artifactId>
 		<groupId>com.socgen.bookmark</groupId>
-		<version>${revision}</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>acceptance-test</artifactId>
