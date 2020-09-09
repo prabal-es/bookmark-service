@@ -27,7 +27,7 @@ public class Company {
 	@NoArgsConstructor
 	public static class CompanyData {
 
-		private Long id;
+		private String uuid;
 
 		private String name;
 
