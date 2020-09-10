@@ -1,1 +1,1 @@
-web: java -jar -Dserver.port=$PORT bootstrap/target/bootstrap-0.0.1-SNAPSHOT-exec.jar
+web: java -jar -Dserver.port=$PORT $JAVA_OPTS bootstrap/target/bootstrap-0.0.1-SNAPSHOT-exec.jar
