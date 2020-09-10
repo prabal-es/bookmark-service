@@ -31,3 +31,12 @@ workflows:
   workflow:
     jobs:
     - build
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.2
+jobs:
+  build:
+    steps:
+      - codecov/upload:
+          file: './target/site/jacoco/jacoco.xml'
+          token: dc9b1464-bf30-4695-9502-99160daa6ac5
