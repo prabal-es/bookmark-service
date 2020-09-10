@@ -1,0 +1,15 @@
+- name: Deploy to Heroku Using Docker
+  # You may pin to the exact commit or the version.
+  # uses: mtsmachado8/heroku-deploy@5bf18e5f6160beaccc01c678d0aaa81963434e74
+  uses: mtsmachado8/heroku-deploy@v2.0.3
+  with:
+    # Email Linked to your Heroku Account
+    email: prabalworld2020ster@gmail.com
+    # Your Heroku API Key
+    api_key: 6ca43053-e633-4b4c-8f88-ee514d0c6e3e
+    # Your Heroku App Name
+    app_name: bookmark-service-9
+    # Dokerfile path
+    dockerfile_path: bootstrap/Dockerfile
+    # Optional build parameters
+    options: # optional
