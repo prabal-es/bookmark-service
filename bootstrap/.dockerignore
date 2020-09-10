@@ -1,0 +1,15 @@
+.settings/
+src/
+.classpath
+.factorypath
+.project
+Dockerfile
+target/classes
+target/generated-sources
+target/generated-test-sources
+target/maven-archiver
+target/maven-status
+target/site
+target/test-classes
+target/bootstrap-0.0.1-SNAPSHOT.jar
+pom.xml
