@@ -1,7 +1,7 @@
-- name: Deploy to Heroku Using Docker
+- name: Deploy Docker Image to Heroku App
   # You may pin to the exact commit or the version.
-  # uses: mtsmachado8/heroku-deploy@5bf18e5f6160beaccc01c678d0aaa81963434e74
-  uses: mtsmachado8/heroku-deploy@v2.0.3
+  # uses: jctaveras/heroku-deploy@7b87e8dd4665d3b667e0cf1633241a66e3abd396
+  uses: jctaveras/heroku-deploy@v2.0.0
   with:
     # Email Linked to your Heroku Account
     email: prabalworld2020ster@gmail.com
@@ -10,6 +10,6 @@
     # Your Heroku App Name
     app_name: bookmark-service-9
     # Dokerfile path
-    dockerfile_path: bootstrap/Dockerfile
+    dockerfile_path: ./bootstrap/Dockerfile
     # Optional build parameters
     options: # optional
