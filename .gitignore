@@ -2,6 +2,7 @@
 .project
 .settings/
 bootstrap/.factorypath
+target/
 
 #bootstrap
 bootstrap/.classpath

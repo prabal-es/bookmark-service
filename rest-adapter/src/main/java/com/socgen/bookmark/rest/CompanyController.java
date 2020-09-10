@@ -1,5 +1,7 @@
 package com.socgen.bookmark.rest;
 
+import java.util.UUID;
+
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,10 +48,15 @@ public class CompanyController {
 			@ApiResponse(responseCode = "404", description = "Company not exist.", content = @Content) })
 	public ResponseEntity<CompanyData> getCompany(
 			@Parameter(description = "Universal unique id of the company") @PathVariable(name = "uuid", required = false) final String uuid) {
-		if (null == uuid || uuid.length() > 36) {
+		
+		try {
+			UUID.fromString(uuid);
+		} catch (IllegalArgumentException e) {
 			return ResponseEntity.badRequest().build();
 		}
+
 		CompanyData companyData = companyDomainPort.getCompanyByUuid(uuid);
+		
 		if (null == companyData) {
 			return ResponseEntity.notFound().build();
 		}

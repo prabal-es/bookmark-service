@@ -8,9 +8,8 @@
 		<artifactId>bookmark-service</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+
 	<artifactId>rest-adapter</artifactId>
-	<name>rest-adapter</name>
-	<description>Demo project for Spring Boot</description>
 
 	<dependencies>
 		<dependency>
@@ -43,4 +42,37 @@
 		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-test</artifactId> 
 			</dependency> -->
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>${argLine}</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy-classes-to-test-module</id>
+						<goals>
+							<goal>testResources</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${project.build.outputDirectory}</directory>
+								</resource>
+							</resources>
+							<outputDirectory>
+								${project.basedir}/../target/classes
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
