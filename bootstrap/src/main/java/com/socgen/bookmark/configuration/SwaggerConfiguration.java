@@ -9,10 +9,8 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
-import lombok.Data;
 
 @Configuration
-@Data
 public class SwaggerConfiguration {
 
 	@Value("${springdoc.swagger-ui.info.title}")
@@ -42,7 +40,7 @@ public class SwaggerConfiguration {
 	}
 
 	@Bean
-	public GroupedOpenApi helloGorupOpenApi() {
+	public GroupedOpenApi companyGorupOpenApi() {
 		String[] paths = { "/**/companies*/**" };
 		return GroupedOpenApi.builder().setGroup("Company").pathsToMatch(paths).build();
 	}

@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -17,10 +17,23 @@ jobs:
           - v1-dependencies-{{ checksum "pom.xml" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-      - run: mvn clean install
       - save_cache:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-      # run tests!
-      - run: mvn integration-test
+      - run: mvn clean install
+      - run: mvn jacoco:report
+      - store_artifacts:
+          path:  target
+      - codecov/upload:
+          file: './target/site/jacoco/jacoco.xml'
+          token: dc9b1464-bf30-4695-9502-99160daa6ac5
+
+workflows:
+  version: 2.1
+  workflow:
+    jobs:
+    - build
+
+orbs:
+  codecov: codecov/codecov@1.0.2
