@@ -23,9 +23,8 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
       - run: mvn clean install
       - run: mvn jacoco:report
-      - codecov/upload:
-          file: './coverage/clover.xml''./target/site/jacoco/jacoco.xml'
-          token: dc9b1464-bf30-4695-9502-99160daa6ac5
+      - store_artifacts:
+          path:  target
 
 workflows:
   version: 2
