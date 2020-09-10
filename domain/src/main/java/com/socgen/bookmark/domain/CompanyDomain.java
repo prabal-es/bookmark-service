@@ -27,10 +27,6 @@ public class CompanyDomain implements CompanyDomainPort {
 
 	@Override
 	public CompanyData getCompanyByUuid(final String uuid) {
-		CompanyData companyData = null;
-		if(null != uuid) {
-			companyData = companyJpaPort.getCompanyByUuid(uuid);
-		}
-		return companyData;
+		return companyJpaPort.getCompanyByUuid(uuid);
 	}
 }

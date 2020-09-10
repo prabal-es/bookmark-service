@@ -33,6 +33,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot-maven-plugin.version}</version>
 				<configuration>
 					<classifier>exec</classifier>
 				</configuration>
@@ -41,6 +42,37 @@
 						<goals>
 							<goal>repackage</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+
+				<configuration>
+					<argLine>${argLine}</argLine>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy-classes-to-test-module</id>
+						<goals>
+							<goal>testResources</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${project.build.outputDirectory}</directory>
+								</resource>
+							</resources>
+							<outputDirectory>
+								${project.basedir}/../target/classes
+							</outputDirectory>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

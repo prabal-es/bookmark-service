@@ -59,6 +59,11 @@
 		<h2.version>1.4.200</h2.version>
 		<liquibase.version>3.8.7</liquibase.version>
 		<spring-boot-maven-plugin.version>1.1.2.RELEASE</spring-boot-maven-plugin.version>
+		<maven-plugin.version>2.22.2</maven-plugin.version>
+		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+		<jacoco.version>0.8.5</jacoco.version>
+		<jacoco.reportPath>${project.basedir}/../target/jacoco.exec</jacoco.reportPath>
+
 	</properties>
 
 	<dependencyManagement>
@@ -169,23 +174,48 @@
 				<version>${spring-boot.version}</version>
 				<scope>test</scope>
 			</dependency>
-
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${spring-boot-maven-plugin.version}</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
+				<version>${maven-plugin.version}</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.22.2</version>
+				<version>${maven-plugin.version}</version>
+			</plugin>
+			<!-- build/plugins (not build/pluginManagement/plugins!) -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>agent-for-ut</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<append>true</append>
+							<destFile>${jacoco.reportPath}</destFile>
+
+						</configuration>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<destFile>${jacoco.reportPath}</destFile>
+							<dataFile>${jacoco.reportPath}</dataFile>
+							<outputDirectory>${project.reporting.outputDirectory}/code-coverage</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

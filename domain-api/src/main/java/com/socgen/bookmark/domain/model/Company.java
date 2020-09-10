@@ -8,23 +8,20 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
 @Builder
-@Data
-@NoArgsConstructor
+@Getter
 public class Company {
 
 	private List<CompanyData> data;
 
 	@AllArgsConstructor
 	@Builder
-	@Data
+	@Getter
 	@JsonInclude(value = Include.NON_NULL)
 	@JsonIgnoreProperties(ignoreUnknown = true)
-	@NoArgsConstructor
 	public static class CompanyData {
 
 		private String uuid;

@@ -15,13 +15,12 @@ import org.hibernate.annotations.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 
 @AllArgsConstructor
 @Builder
-@Data
+@Getter
 @Entity
 @NoArgsConstructor
 @Table(name = "t_company")
