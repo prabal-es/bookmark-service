@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,8 +31,7 @@ public class CompanyEntity implements Serializable {
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
 	@Column(name = "UUID", updatable = false, nullable = false)
-	@ColumnDefault("random_uuid()")
-	@Type(type = "uuid-char")
+	@ColumnDefault("uuid_generate_v4()")
 	private UUID uuid;
 
 	@Column(name = "name")
