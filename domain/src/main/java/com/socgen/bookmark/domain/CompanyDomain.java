@@ -2,9 +2,11 @@ package com.socgen.bookmark.domain;
 
 import com.socgen.bookmark.domain.model.Company;
 import com.socgen.bookmark.domain.model.Company.CompanyData;
+import com.socgen.bookmark.domain.model.Group;
 import com.socgen.bookmark.domain.model.User;
 import com.socgen.bookmark.domain.port.CompanyDomainPort;
 import com.socgen.bookmark.jpa.port.CompanyJpaPort;
+import com.socgen.bookmark.jpa.port.GroupJpaPort;
 import com.socgen.bookmark.jpa.port.UserJpaPort;
 
 import lombok.AllArgsConstructor;
@@ -15,6 +17,8 @@ public class CompanyDomain implements CompanyDomainPort {
 	private final CompanyJpaPort companyJpaPort;
 
 	private final UserJpaPort userJpaPort;
+	
+	private final GroupJpaPort groupJpaPort;
 
 	@Override
 	public Company getCompanies(final Boolean active) {
@@ -45,5 +49,18 @@ public class CompanyDomain implements CompanyDomainPort {
 			users = userJpaPort.getCompanyInactiveUsers(comapnyUuid);
 		}
 		return users;
+	}
+	
+	@Override
+	public Group getCompanyGroups(final String comapnyUuid, Boolean active) {
+		Group groups = null;
+		if (null == active) {
+			groups = groupJpaPort.getCompanyGroups(comapnyUuid);
+		} else if (active) {
+			groups = groupJpaPort.getCompanyActiveGroups(comapnyUuid);
+		} else {
+			groups = groupJpaPort.getCompanyInactiveGroups(comapnyUuid);
+		}
+		return groups;
 	}
 }

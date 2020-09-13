@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.socgen.bookmark.domain.model.Company;
 import com.socgen.bookmark.domain.model.Company.CompanyData;
+import com.socgen.bookmark.domain.model.Group;
 import com.socgen.bookmark.domain.model.User;
 import com.socgen.bookmark.domain.port.CompanyDomainPort;
 
@@ -81,5 +82,22 @@ public class CompanyController {
 		}
 		return ResponseEntity.ok()
 				.body(companyDomainPort.getCompanyUsers(uuid, null == active ? active : Boolean.valueOf(active)));
+	}
+	
+	@GetMapping("/{uuid}/groups")
+	@Operation(description = "Get list of company groups", summary = "Retrive all the list of company groups from bookmark service.")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "List of company groups.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Group.class))),
+			@ApiResponse(responseCode = "400", description = "Invalid universal unique id.", content = @Content) })
+	public ResponseEntity<Group> getCompanyGroups(
+			@Parameter(description = "Universal unique id of the company") @PathVariable(name = "uuid", required = false) final String uuid,
+			@Parameter(description = "State of the company group.") @RequestParam(name = "active", required = false) final Boolean active) {
+		try {
+			UUID.fromString(uuid);
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.badRequest().build();
+		}
+		return ResponseEntity.ok()
+				.body(companyDomainPort.getCompanyGroups(uuid, null == active ? active : Boolean.valueOf(active)));
 	}
 }
