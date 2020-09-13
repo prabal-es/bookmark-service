@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.socgen.bookmark.domain.model.Company;
 import com.socgen.bookmark.domain.model.Company.CompanyData;
+import com.socgen.bookmark.domain.model.User;
 import com.socgen.bookmark.domain.port.CompanyDomainPort;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -50,7 +51,7 @@ public class CompanyController {
 			@ApiResponse(responseCode = "404", description = "Company not exist.", content = @Content) })
 	public ResponseEntity<CompanyData> getCompany(
 			@Parameter(description = "Universal unique id of the company") @PathVariable(name = "uuid", required = false) final String uuid) {
-		
+
 		try {
 			UUID.fromString(uuid);
 		} catch (IllegalArgumentException e) {
@@ -58,10 +59,27 @@ public class CompanyController {
 		}
 
 		CompanyData companyData = companyDomainPort.getCompanyByUuid(uuid);
-		
+
 		if (null == companyData) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok().body(companyData);
+	}
+
+	@GetMapping("/{uuid}/users")
+	@Operation(description = "Get list of company users", summary = "Retrive all the list of company users from bookmark service.")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "List of company users.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = User.class))),
+			@ApiResponse(responseCode = "400", description = "Invalid universal unique id.", content = @Content) })
+	public ResponseEntity<User> getCompanyUsers(
+			@Parameter(description = "Universal unique id of the company") @PathVariable(name = "uuid", required = false) final String uuid,
+			@Parameter(description = "State of the company users.") @RequestParam(name = "active", required = false) final Boolean active) {
+		try {
+			UUID.fromString(uuid);
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.badRequest().build();
+		}
+		return ResponseEntity.ok()
+				.body(companyDomainPort.getCompanyUsers(uuid, null == active ? active : Boolean.valueOf(active)));
 	}
 }

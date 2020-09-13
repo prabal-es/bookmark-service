@@ -49,7 +49,8 @@ public class CompanyJpaAdapter implements CompanyJpaPort {
 
 	private CompanyData mapCompanyData(final CompanyEntity companyEntity) {
 		return CompanyData.builder().uuid(companyEntity.getUuid().toString()).name(companyEntity.getName())
-				.description(companyEntity.getDescription()).active(companyEntity.isActive()).build();
+				.description(companyEntity.getDescription()).img(companyEntity.getImg()).url(companyEntity.getUrl())
+				.active(companyEntity.getActive()).userCount(companyEntity.getUsers().size()).build();
 	}
 
 	private Company mapCompanies(final List<CompanyEntity> companyEntities) {
