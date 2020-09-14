@@ -41,13 +41,13 @@ public class SwaggerConfiguration {
 
 	@Bean
 	public GroupedOpenApi companyGorupOpenApi() {
-		String[] paths = { "/**/companies*/**" };
+		String[] paths = { "/api/*/companies*/**" };
 		return GroupedOpenApi.builder().setGroup("Company").pathsToMatch(paths).build();
 	}
 	
 	@Bean
-	public GroupedOpenApi hello2GorupOpenApi() {
-		String[] paths = { "/**/hello2**" };
-		return GroupedOpenApi.builder().setGroup("Hello-2").pathsToMatch(paths).build();
+	public GroupedOpenApi userGorupOpenApi() {
+		String[] paths = { "/api/*/users*/**" };
+		return GroupedOpenApi.builder().setGroup("User").pathsToMatch(paths).build();
 	}
 }

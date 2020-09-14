@@ -37,6 +37,11 @@ public class UserJpaAdapter implements UserJpaPort {
 				Example.of(UserEntity.builder().company(CompanyEntity.builder().urlContext(comapnyUrlContext).build())
 						.active(Boolean.FALSE).build())));
 	}
+	
+	@Override
+	public User getUsers() {
+		return  mapUsers(userRepository.findAll());
+	}
 
 	private User mapUsers(final List<UserEntity> userEntities) {
 		var users = new ArrayList<UserData>();
@@ -51,5 +56,4 @@ public class UserJpaAdapter implements UserJpaPort {
 				.urlContext(userEntity.getUrlContext()).role(userEntity.getRole()).img(userEntity.getImg())
 				.url(userEntity.getUrl()).active(userEntity.getActive()).build();
 	}
-
 }
