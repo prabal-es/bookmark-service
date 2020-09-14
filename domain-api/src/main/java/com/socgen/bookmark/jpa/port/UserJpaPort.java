@@ -4,10 +4,10 @@ import com.socgen.bookmark.domain.model.User;
 
 public interface UserJpaPort {
 
-	User getCompanyUsers(String comapnyUuid);
+	User getCompanyUsers(String comapnyUrlContext);
 	
-	User getCompanyActiveUsers(String comapnyUuid);
+	User getCompanyActiveUsers(String comapnyUrlContext);
 	
-	User getCompanyInactiveUsers(String comapnyUuid);
+	User getCompanyInactiveUsers(String comapnyUrlContext);
 
 }

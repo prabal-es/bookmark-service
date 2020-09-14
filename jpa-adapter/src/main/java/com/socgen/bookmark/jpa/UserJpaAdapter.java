@@ -2,7 +2,6 @@ package com.socgen.bookmark.jpa;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.data.domain.Example;
 
@@ -21,22 +20,21 @@ public class UserJpaAdapter implements UserJpaPort {
 	private final UserRepository userRepository;
 
 	@Override
-	public User getCompanyUsers(String comapnyUuid) {
-		return mapUsers(userRepository.findAll(Example.of(UserEntity.builder()
-				.company(CompanyEntity.builder().uuid(UUID.fromString(comapnyUuid)).build()).build())));
+	public User getCompanyUsers(String comapnyUrlContext) {
+		return mapUsers(userRepository.findAll(Example.of(
+				UserEntity.builder().company(CompanyEntity.builder().urlContext(comapnyUrlContext).build()).build())));
 	}
 
 	@Override
-	public User getCompanyActiveUsers(String comapnyUuid) {
+	public User getCompanyActiveUsers(String comapnyUrlContext) {
 		return mapUsers(userRepository.findAll(Example.of(UserEntity.builder()
-				.company(CompanyEntity.builder().uuid(UUID.fromString(comapnyUuid)).build())
-				.active(Boolean.TRUE).build())));
+				.company(CompanyEntity.builder().urlContext(comapnyUrlContext).build()).active(Boolean.TRUE).build())));
 	}
 
 	@Override
-	public User getCompanyInactiveUsers(String comapnyUuid) {
-		return mapUsers(userRepository.findAll(Example
-				.of(UserEntity.builder().company(CompanyEntity.builder().uuid(UUID.fromString(comapnyUuid)).build())
+	public User getCompanyInactiveUsers(String comapnyUrlContext) {
+		return mapUsers(userRepository.findAll(
+				Example.of(UserEntity.builder().company(CompanyEntity.builder().urlContext(comapnyUrlContext).build())
 						.active(Boolean.FALSE).build())));
 	}
 
@@ -50,8 +48,8 @@ public class UserJpaAdapter implements UserJpaPort {
 
 	private UserData mapUserData(final UserEntity userEntity) {
 		return UserData.builder().uuid(userEntity.getUuid().toString()).name(userEntity.getName())
-				.role(userEntity.getRole()).img(userEntity.getImg()).url(userEntity.getUrl())
-				.active(userEntity.getActive()).build();
+				.urlContext(userEntity.getUrlContext()).role(userEntity.getRole()).img(userEntity.getImg())
+				.url(userEntity.getUrl()).active(userEntity.getActive()).build();
 	}
 
 }

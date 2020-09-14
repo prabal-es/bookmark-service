@@ -1,7 +1,5 @@
 package com.socgen.bookmark.rest;
 
-import java.util.UUID;
-
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -44,22 +42,15 @@ public class CompanyController {
 		return companyDomainPort.getCompanies(null == active ? active : Boolean.valueOf(active));
 	}
 
-	@GetMapping("/{uuid}")
+	@GetMapping("/{url-context}")
 	@Operation(description = "Get details of company", summary = "Retrive all the details of company from bookmark service.")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Company details.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = CompanyData.class))),
-			@ApiResponse(responseCode = "400", description = "Invalid universal unique id.", content = @Content),
 			@ApiResponse(responseCode = "404", description = "Company not exist.", content = @Content) })
 	public ResponseEntity<CompanyData> getCompany(
-			@Parameter(description = "Universal unique id of the company") @PathVariable(name = "uuid", required = false) final String uuid) {
+			@Parameter(description = "URL context id of the company") @PathVariable(name = "url-context", required = false) final String urlContext) {
 
-		try {
-			UUID.fromString(uuid);
-		} catch (IllegalArgumentException e) {
-			return ResponseEntity.badRequest().build();
-		}
-
-		CompanyData companyData = companyDomainPort.getCompanyByUuid(uuid);
+		CompanyData companyData = companyDomainPort.getCompanyByUrlContext(urlContext);
 
 		if (null == companyData) {
 			return ResponseEntity.notFound().build();
@@ -67,37 +58,26 @@ public class CompanyController {
 		return ResponseEntity.ok().body(companyData);
 	}
 
-	@GetMapping("/{uuid}/users")
+	@GetMapping("/{url-context}/users")
 	@Operation(description = "Get list of company users", summary = "Retrive all the list of company users from bookmark service.")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "List of company users.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = User.class))),
-			@ApiResponse(responseCode = "400", description = "Invalid universal unique id.", content = @Content) })
+			@ApiResponse(responseCode = "200", description = "List of company users.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = User.class))) })
 	public ResponseEntity<User> getCompanyUsers(
-			@Parameter(description = "Universal unique id of the company") @PathVariable(name = "uuid", required = false) final String uuid,
+			@Parameter(description = "URL context id of the company") @PathVariable(name = "url-context", required = false) final String urlContext,
 			@Parameter(description = "State of the company users.") @RequestParam(name = "active", required = false) final Boolean active) {
-		try {
-			UUID.fromString(uuid);
-		} catch (IllegalArgumentException e) {
-			return ResponseEntity.badRequest().build();
-		}
 		return ResponseEntity.ok()
-				.body(companyDomainPort.getCompanyUsers(uuid, null == active ? active : Boolean.valueOf(active)));
+				.body(companyDomainPort.getCompanyUsers(urlContext, null == active ? active : Boolean.valueOf(active)));
 	}
-	
-	@GetMapping("/{uuid}/groups")
+
+	@GetMapping("/{url-context}/groups")
 	@Operation(description = "Get list of company groups", summary = "Retrive all the list of company groups from bookmark service.")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "List of company groups.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Group.class))),
-			@ApiResponse(responseCode = "400", description = "Invalid universal unique id.", content = @Content) })
+			@ApiResponse(responseCode = "200", description = "List of company groups.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Group.class))) })
 	public ResponseEntity<Group> getCompanyGroups(
-			@Parameter(description = "Universal unique id of the company") @PathVariable(name = "uuid", required = false) final String uuid,
+			@Parameter(description = "URL context id of the company") @PathVariable(name = "url-context", required = false) final String urlContext,
 			@Parameter(description = "State of the company group.") @RequestParam(name = "active", required = false) final Boolean active) {
-		try {
-			UUID.fromString(uuid);
-		} catch (IllegalArgumentException e) {
-			return ResponseEntity.badRequest().build();
-		}
-		return ResponseEntity.ok()
-				.body(companyDomainPort.getCompanyGroups(uuid, null == active ? active : Boolean.valueOf(active)));
+
+		return ResponseEntity.ok().body(
+				companyDomainPort.getCompanyGroups(urlContext, null == active ? active : Boolean.valueOf(active)));
 	}
 }

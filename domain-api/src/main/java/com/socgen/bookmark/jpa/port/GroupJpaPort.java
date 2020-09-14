@@ -4,10 +4,10 @@ import com.socgen.bookmark.domain.model.Group;
 
 public interface GroupJpaPort {
 
-	Group getCompanyGroups(String comapnyUuid);
+	Group getCompanyGroups(String comapnyUrlContext);
 	
-	Group getCompanyActiveGroups(String comapnyUuid);
+	Group getCompanyActiveGroups(String comapnyUrlContext);
 	
-	Group getCompanyInactiveGroups(String comapnyUuid);
+	Group getCompanyInactiveGroups(String comapnyUrlContext);
 
 }

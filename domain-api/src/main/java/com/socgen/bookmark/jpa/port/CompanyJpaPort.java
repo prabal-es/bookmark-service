@@ -11,6 +11,6 @@ public interface CompanyJpaPort {
 	
 	Company getInactiveCompanies();
 	
-	CompanyData getCompanyByUuid(String uuid);
+	CompanyData getCompanyByUrlContext(String urlContext);
 	
 }

@@ -43,6 +43,9 @@ public class UserEntity implements Serializable {
 
 	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "url_context")
+	private String urlContext;
 
 	@Column(name = "role", columnDefinition = "VARCHAR(10)")
 	@Enumerated(EnumType.STRING)

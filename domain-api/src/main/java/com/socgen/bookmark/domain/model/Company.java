@@ -27,6 +27,8 @@ public class Company {
 		private String uuid;
 
 		private String name;
+		
+		private String urlContext;
 
 		private String description;
 		

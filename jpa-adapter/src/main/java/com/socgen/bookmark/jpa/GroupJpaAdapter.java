@@ -2,7 +2,6 @@ package com.socgen.bookmark.jpa;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.data.domain.Example;
 
@@ -21,22 +20,21 @@ public class GroupJpaAdapter implements GroupJpaPort {
 	private final GroupRepository groupRepository;
 
 	@Override
-	public Group getCompanyGroups(String comapnyUuid) {
+	public Group getCompanyGroups(String comapnyUrlContext) {
+		return mapGroups(groupRepository.findAll(Example.of(
+				GroupEntity.builder().company(CompanyEntity.builder().urlContext(comapnyUrlContext).build()).build())));
+	}
+
+	@Override
+	public Group getCompanyActiveGroups(String comapnyUrlContext) {
 		return mapGroups(groupRepository.findAll(Example.of(GroupEntity.builder()
-				.company(CompanyEntity.builder().uuid(UUID.fromString(comapnyUuid)).build()).build())));
+				.company(CompanyEntity.builder().urlContext(comapnyUrlContext).build()).active(Boolean.TRUE).build())));
 	}
 
 	@Override
-	public Group getCompanyActiveGroups(String comapnyUuid) {
-		return mapGroups(groupRepository.findAll(Example
-				.of(GroupEntity.builder().company(CompanyEntity.builder().uuid(UUID.fromString(comapnyUuid)).build())
-						.active(Boolean.TRUE).build())));
-	}
-
-	@Override
-	public Group getCompanyInactiveGroups(String comapnyUuid) {
-		return mapGroups(groupRepository.findAll(Example
-				.of(GroupEntity.builder().company(CompanyEntity.builder().uuid(UUID.fromString(comapnyUuid)).build())
+	public Group getCompanyInactiveGroups(String comapnyUrlContext) {
+		return mapGroups(groupRepository.findAll(
+				Example.of(GroupEntity.builder().company(CompanyEntity.builder().urlContext(comapnyUrlContext).build())
 						.active(Boolean.FALSE).build())));
 	}
 

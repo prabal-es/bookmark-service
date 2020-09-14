@@ -9,9 +9,9 @@ public interface CompanyDomainPort {
 
 	Company getCompanies(Boolean active);
 	
-	CompanyData getCompanyByUuid(String uuid);
+	CompanyData getCompanyByUrlContext(String urlContext);
 	
-	User getCompanyUsers(String comapnyUuid, Boolean active);
+	User getCompanyUsers(String comapnyUrlContext, Boolean active);
 	
-	Group getCompanyGroups(String comapnyUuid, Boolean active);
+	Group getCompanyGroups(String comapnyUrlContext, Boolean active);
 }

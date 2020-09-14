@@ -2,7 +2,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE T_COMPANY
 (
 	UUID 			uuid default uuid_generate_v4(),
-	URL_CONTEXT		VARCHAR(50) NOT NULL, -- should be lower case with hyphen
+	URL_CONTEXT		VARCHAR(50) NOT NULL UNIQUE, -- should be lower case with hyphen
 	NAME 			VARCHAR(50) NOT NULL,
 	DESCRIPTION		VARCHAR(500),
 	IMG				VARCHAR(2083),
@@ -20,7 +20,7 @@ CREATE TABLE T_USER
 (
 	UUID 			uuid default uuid_generate_v4(),
 	NAME 			VARCHAR(50) NOT NULL,
-	URL_CONTEXT		VARCHAR(50) NOT NULL, -- should be lower case with hyphen
+	URL_CONTEXT		VARCHAR(50) NOT NULL UNIQUE, -- should be lower case with hyphen
 	ROLE			VARCHAR(10) NOT NULL,
 	IMG				VARCHAR(2083),
 	URL				VARCHAR(2083),
@@ -38,7 +38,7 @@ CREATE TABLE T_GROUP
 (
 	UUID 			uuid default uuid_generate_v4(),
 	NAME 			VARCHAR(50) NOT NULL,
-	URL_CONTEXT		VARCHAR(50) NOT NULL, -- should be lower case with hyphen
+	URL_CONTEXT		VARCHAR(50) NOT NULL UNIQUE, -- should be lower case with hyphen
 	DESCRIPTION		VARCHAR(500),
 	IMG				VARCHAR(2083), 
 	ACTIVE			BOOLEAN,

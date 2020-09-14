@@ -40,6 +40,9 @@ public class CompanyEntity implements Serializable {
 
 	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "url_context")
+	private String urlContext;
 
 	@Column(name = "description")
 	private String description;

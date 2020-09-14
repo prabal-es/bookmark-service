@@ -30,6 +30,8 @@ public class User {
 
 		private String name;
 
+		private String urlContext;
+		
 		private ROLE role;
 		
 		private String img;

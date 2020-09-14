@@ -67,7 +67,7 @@ public class CompanyControllerTest {
 	@Test
 	@DisplayName("shoud give companies details from API")
 	public void shouldGiveCompanyDetailsFromApi() throws Exception {
-		Mockito.when(companyDomainPort.getCompanyByUuid("629fab9a-0f46-4925-8e25-4037069f7dfd")).thenReturn(getSocGenData());
+		Mockito.when(companyDomainPort.getCompanyByUrlContext("629fab9a-0f46-4925-8e25-4037069f7dfd")).thenReturn(getSocGenData());
 		mockMvc.perform(get("/api/v1/companies/629fab9a-0f46-4925-8e25-4037069f7dfd")).andExpect(status().isOk())
 				.andExpect(jsonPath("$.uuid").value("629fab9a-0f46-4925-8e25-4037069f7dfd"));
 	}
@@ -82,7 +82,7 @@ public class CompanyControllerTest {
 	@Test
 	@DisplayName("shoud give not found response on unknown UUID")
 	public void shouldGiveNotFoundOnUnknownUuid() throws Exception {
-		Mockito.when(companyDomainPort.getCompanyByUuid("629fab9a-0f46-4925-9999-4037069f7dfd")).thenReturn(null);
+		Mockito.when(companyDomainPort.getCompanyByUrlContext("629fab9a-0f46-4925-9999-4037069f7dfd")).thenReturn(null);
 		mockMvc.perform(get("/api/v1/companies/629fab9a-0f46-4925-9999-4037069f7dfd")).andExpect(status().isNotFound());
 	}
 
