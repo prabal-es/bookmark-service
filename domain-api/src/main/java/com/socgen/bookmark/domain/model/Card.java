@@ -9,37 +9,50 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @Builder
 @Getter
-public class User {
-	public enum ROLE {
-		ADMIN, USER
+public class Card {
+	public enum CardType {
+		CARD, TINY
 	};
-	private List<UserData> data;
+	
+	private List<CardData> data;
 
 	@AllArgsConstructor
+	@NoArgsConstructor
 	@Builder
 	@Getter
+	@Setter
 	@JsonInclude(value = Include.NON_NULL)
 	@JsonIgnoreProperties(ignoreUnknown = true)
-	public static class UserData {
+	public static class CardData {
 
 		private String uuid;
 
 		private String name;
-
-		private String urlContext;
 		
-		private ROLE role;
+		private String description;
+
+		private String tinyUrl;
+		
+		private String detailUrl;
 		
 		private String img;
 		
-		private String url;
-
-		private Boolean active;
+		private CardType type;
 		
-		private String companyUrlContext;
+		private Long createdAt;
+		
+		private Long expireAt;
+		
+		private String companyContext;
+		
+		private String userContext;
+		
+		private Boolean active;
 	}
 }

@@ -54,6 +54,6 @@ public class UserJpaAdapter implements UserJpaPort {
 	private UserData mapUserData(final UserEntity userEntity) {
 		return UserData.builder().uuid(userEntity.getUuid().toString()).name(userEntity.getName())
 				.urlContext(userEntity.getUrlContext()).role(userEntity.getRole()).img(userEntity.getImg())
-				.url(userEntity.getUrl()).active(userEntity.getActive()).build();
+				.url(userEntity.getUrl()).active(userEntity.getActive()).companyUrlContext(userEntity.getCompany().getUrlContext()).build();
 	}
 }

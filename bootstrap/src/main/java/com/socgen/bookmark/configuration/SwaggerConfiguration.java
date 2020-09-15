@@ -50,4 +50,10 @@ public class SwaggerConfiguration {
 		String[] paths = { "/api/*/users*/**" };
 		return GroupedOpenApi.builder().setGroup("User").pathsToMatch(paths).build();
 	}
+	
+	@Bean
+	public GroupedOpenApi tinyGorupOpenApi() {
+		String[] paths = { "/api/*/cards*/**" };
+		return GroupedOpenApi.builder().setGroup("Card").pathsToMatch(paths).build();
+	}
 }

@@ -25,14 +25,16 @@ CREATE TABLE T_USER
 	IMG				VARCHAR(2083),
 	URL				VARCHAR(2083),
 	ACTIVE			BOOLEAN,
-	COMAPNY_ID		uuid NOT NULL,
+	COMAPNY_ID		UUID NOT NULL,
 	PRIMARY KEY 	(UUID),
 	FOREIGN KEY 	(COMAPNY_ID) REFERENCES T_COMPANY(UUID)
 );
 
-INSERT INTO T_USER(UUID, NAME, URL_CONTEXT, ROLE, IMG, URL, ACTIVE, COMAPNY_ID) VALUES (uuid_generate_v4(), 'Prabal Srivastava', 'prabal9', 'ADMIN', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg', 'https://www.linkedin.com/in/prabal9', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
+INSERT INTO T_USER(UUID, NAME, URL_CONTEXT, ROLE, IMG, URL, ACTIVE, COMAPNY_ID) VALUES ('c17480ef-b7c3-4399-abbd-42b2aba7dfe6', 'Prabal Srivastava', 'prabal9', 'ADMIN', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg', 'https://www.linkedin.com/in/prabal9', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
 INSERT INTO T_USER(UUID, NAME, URL_CONTEXT, ROLE, IMG, URL, ACTIVE, COMAPNY_ID) VALUES (uuid_generate_v4(), 'Anshu Gupta', 'anshu', 'USER', 'https://media-exp1.licdn.com/dms/image/C4D03AQFsFNYvN1K1KQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=X2TCVZgxxeQRWNTwKX4_BuexeDYy5ocX5_ZSzi2o2FY', 'https://www.linkedin.com/in/anshu-gupta-91271621', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
 INSERT INTO T_USER(UUID, NAME, URL_CONTEXT, ROLE, IMG, URL, ACTIVE, COMAPNY_ID) VALUES (uuid_generate_v4(), 'Anand Singh', 'anand','USER', 'https://media-exp1.licdn.com/dms/image/C5103AQHBE-mur4EoEg/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=lsWiLZx8R0cEZg8sUjMlWm9F1sUmzPSrxIuQEf1kROM', 'https://www.linkedin.com/in/anand-singh-19a288a1', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
+
+
 
 CREATE TABLE T_GROUP
 (
@@ -42,7 +44,7 @@ CREATE TABLE T_GROUP
 	DESCRIPTION		VARCHAR(500),
 	IMG				VARCHAR(2083), 
 	ACTIVE			BOOLEAN,
-	COMAPNY_ID		uuid NOT NULL,
+	COMAPNY_ID		UUID NOT NULL,
 	PRIMARY KEY 	(UUID),
 	FOREIGN KEY 	(COMAPNY_ID) REFERENCES T_COMPANY(UUID)
 );
@@ -50,3 +52,44 @@ CREATE TABLE T_GROUP
 INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES (uuid_generate_v4(), 'RMO-SGL', 'rmo-sgl', 'RMO SGL Tribe Group.', 'https://reciprocitylabs.com/wp-content/uploads/2019/09/bigstock-Risk-management-in-word-tag-cl-21022796-768x584.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
 INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES (uuid_generate_v4(), 'Achilles', 'achilles', 'A feature team of conflict clearance.', 'https://adamnijhawan.weebly.com/uploads/3/8/0/6/38061047/980837259.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
 INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES (uuid_generate_v4(), 'Engineering Stream', 'engineering-stream', 'On going hackathon.', 'https://engineering-stream-hackathon.github.io/challenge/img/engg_stream_hackathon.png', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
+
+
+
+CREATE TABLE T_CARD
+(
+	UUID 			uuid default uuid_generate_v4(),
+	NAME 			VARCHAR(50),
+	DESCRIPTION		VARCHAR(500),
+	TINY_URL		VARCHAR(50) NOT NULL UNIQUE,
+	DETAIL_URL		VARCHAR(2083), 
+	IMG				VARCHAR(2083),
+	TYPE			VARCHAR(10) NOT NULL,
+	CREATED_AT		BIGINT NOT NULL,
+	EXPIRE_AT		BIGINT,
+	ACTIVE			BOOLEAN,
+	COMAPNY_ID		UUID NOT NULL,
+	USER_ID			UUID NOT NULL,
+	PRIMARY KEY 	(UUID),
+	FOREIGN KEY 	(COMAPNY_ID) REFERENCES T_COMPANY(UUID),
+	FOREIGN KEY 	(USER_ID) REFERENCES T_USER(UUID)
+);
+
+INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
+VALUES (uuid_generate_v4(), null, null, 'TEST123', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
+'TINY', 1600166936000, '1700166936000', true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
+
+INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
+VALUES (uuid_generate_v4(), null, null, 'TEST456', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
+'TINY', 1600166936000, '1600166937000', true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
+
+INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
+VALUES (uuid_generate_v4(), null, null, 'TEST789', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
+'TINY', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
+
+
+
+
+
+
+
+
