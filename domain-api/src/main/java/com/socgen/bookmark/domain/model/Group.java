@@ -9,15 +9,22 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @Builder
 @Getter
 public class Group {
 	
+	public enum GroupType {
+		SELF, ALL, OTHER
+	};
+	
 	private List<GroupData> data;
 
 	@AllArgsConstructor
+	@NoArgsConstructor
 	@Builder
 	@Getter
 	@JsonInclude(value = Include.NON_NULL)
@@ -28,6 +35,7 @@ public class Group {
 
 		private String name;
 
+		@Setter
 		private String urlContext;
 		
 		private String description;

@@ -49,9 +49,9 @@ CREATE TABLE T_GROUP
 	FOREIGN KEY 	(COMAPNY_ID) REFERENCES T_COMPANY(UUID)
 );
 
-INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES (uuid_generate_v4(), 'RMO-SGL', 'rmo-sgl', 'RMO SGL Tribe Group.', 'https://reciprocitylabs.com/wp-content/uploads/2019/09/bigstock-Risk-management-in-word-tag-cl-21022796-768x584.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
-INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES (uuid_generate_v4(), 'Achilles', 'achilles', 'A feature team of conflict clearance.', 'https://adamnijhawan.weebly.com/uploads/3/8/0/6/38061047/980837259.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
-INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES (uuid_generate_v4(), 'Engineering Stream', 'engineering-stream', 'On going hackathon.', 'https://engineering-stream-hackathon.github.io/challenge/img/engg_stream_hackathon.png', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
+INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('2cb44d2a-63b1-4aad-8957-44c3203bea76', 'RMO-SGL', 'rmo-sgl', 'RMO SGL Tribe Group.', 'https://reciprocitylabs.com/wp-content/uploads/2019/09/bigstock-Risk-management-in-word-tag-cl-21022796-768x584.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
+INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6e4cf9e1-8710-4f80-9aa5-3cd3bc0c58a9', 'Achilles', 'achilles', 'A feature team of conflict clearance.', 'https://adamnijhawan.weebly.com/uploads/3/8/0/6/38061047/980837259.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
+INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6c440055-7e30-4847-b446-22706895c9df', 'Engineering Stream', 'engineering-stream', 'On going hackathon.', 'https://engineering-stream-hackathon.github.io/challenge/img/engg_stream_hackathon.png', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
 
 
 
@@ -79,7 +79,7 @@ VALUES (uuid_generate_v4(), null, null, 'TEST123', 'http://www.google.com', 'htt
 'TINY', 1600166936000, '1700166936000', true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
 VALUES (uuid_generate_v4(), null, null, 'TEST456', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
-'TINY', 1600166936000, '1600166937000', true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
+'TINY', 1600166936000, '1800166937000', true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
 VALUES (uuid_generate_v4(), null, null, 'TEST789', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
 'TINY', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
@@ -91,22 +91,19 @@ VALUES (uuid_generate_v4(), 'TestCard1', 'This is detail DESCRIPTION of 500 leng
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
 VALUES (uuid_generate_v4(), 'TestCard2', 'This is detail DESCRIPTION of 500 length', 'TESTCARD456', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
 'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
-INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES (uuid_generate_v4(), 'TestCard3', 'This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length', 'TESTCARD789', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
-'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
-INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES (uuid_generate_v4(), 'TestCard4', 'This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length', 'TESTCARD101', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
-'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
-INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES (uuid_generate_v4(), 'TestCard5', 'This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length', 'TESTCARD111', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
-'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 
-INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES (uuid_generate_v4(), 'TestCard6', 'This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length', 'TESTCARD121', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
-'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
-INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES (uuid_generate_v4(), 'TestCard7', 'This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length This is detail DESCRIPTION of 500 length', 'TESTCARD131', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
-'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
+
+CREATE TABLE T_USER_GROUP --this table for group admin mapping
+(
+	GROUP_ID		UUID NOT NULL,
+	USER_ID			UUID NOT NULL,
+	FOREIGN KEY 	(GROUP_ID) REFERENCES T_GROUP(UUID),
+	FOREIGN KEY 	(USER_ID) REFERENCES T_USER(UUID)
+);
+
+INSERT INTO T_USER_GROUP(GROUP_ID, USER_ID) VALUES ('2cb44d2a-63b1-4aad-8957-44c3203bea76', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
+INSERT INTO T_USER_GROUP(GROUP_ID, USER_ID) VALUES ('6e4cf9e1-8710-4f80-9aa5-3cd3bc0c58a9', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
+--INSERT INTO T_USER_GROUP(GROUP_ID, USER_ID) VALUES ('6c440055-7e30-4847-b446-22706895c9df', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 
 
 

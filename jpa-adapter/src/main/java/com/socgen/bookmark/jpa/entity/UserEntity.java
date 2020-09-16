@@ -13,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,7 +22,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
-import com.socgen.bookmark.domain.model.User.ROLE;
+import com.socgen.bookmark.domain.model.User.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,7 +54,7 @@ public class UserEntity implements Serializable {
 
 	@Column(name = "role", columnDefinition = "VARCHAR(10)")
 	@Enumerated(EnumType.STRING)
-	private ROLE role;
+	private Role role;
 
 	@Column(name = "img")
 	private String img;
@@ -71,4 +73,11 @@ public class UserEntity implements Serializable {
             fetch = FetchType.LAZY,
             mappedBy = "user")
     private Set<CardEntity> cards;
+	
+	@ManyToMany
+	@JoinTable(
+	  name = "T_USER_GROUP", 
+	  joinColumns = @JoinColumn(name = "USER_ID"), 
+	  inverseJoinColumns = @JoinColumn(name = "GROUP_ID"))
+	private Set<GroupEntity> userGroups;
 }

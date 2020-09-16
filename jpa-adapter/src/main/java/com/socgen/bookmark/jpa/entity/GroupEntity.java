@@ -1,6 +1,7 @@
 package com.socgen.bookmark.jpa.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -55,4 +58,11 @@ public class GroupEntity implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "COMAPNY_ID", nullable = false)
 	private CompanyEntity company;
+	
+	@ManyToMany
+	@JoinTable(
+	  name = "T_USER_GROUP", 
+	  joinColumns = @JoinColumn(name = "GROUP_ID"), 
+	  inverseJoinColumns = @JoinColumn(name = "USER_ID"))
+	private Set<UserEntity> adminUsers;
 }

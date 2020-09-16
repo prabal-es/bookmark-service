@@ -61,7 +61,7 @@ public class CardController {
 				|| cardData.getDetailUrl().length() > 2083) {
 			return ResponseEntity.badRequest().build();
 		} else {
-			return ResponseEntity.ok(cardDomainPort.createCard(companyContext, userContext, cardData));
+			return ResponseEntity.status(201).body(cardDomainPort.createCard(companyContext, userContext, cardData));
 		}
 	}
 }

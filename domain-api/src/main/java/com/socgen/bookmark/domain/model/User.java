@@ -14,7 +14,7 @@ import lombok.Getter;
 @Builder
 @Getter
 public class User {
-	public enum ROLE {
+	public enum Role {
 		ADMIN, USER
 	};
 	private List<UserData> data;
@@ -32,7 +32,7 @@ public class User {
 
 		private String urlContext;
 		
-		private ROLE role;
+		private Role role;
 		
 		private String img;
 		

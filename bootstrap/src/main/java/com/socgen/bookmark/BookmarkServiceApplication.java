@@ -7,9 +7,11 @@ import org.springframework.context.annotation.Bean;
 
 import com.socgen.bookmark.domain.CardDomain;
 import com.socgen.bookmark.domain.CompanyDomain;
+import com.socgen.bookmark.domain.GroupDomain;
 import com.socgen.bookmark.domain.UserDomain;
 import com.socgen.bookmark.domain.port.CardDomainPort;
 import com.socgen.bookmark.domain.port.CompanyDomainPort;
+import com.socgen.bookmark.domain.port.GroupDomainPort;
 import com.socgen.bookmark.domain.port.UserDomainPort;
 import com.socgen.bookmark.jpa.CardJpaAdapter;
 import com.socgen.bookmark.jpa.CompanyJpaAdapter;
@@ -42,10 +44,10 @@ public class BookmarkServiceApplication {
 	}
 
 	@Bean
-	public GroupJpaPort getGroupJpaPort(final GroupRepository groupRepository) {
-		return new GroupJpaAdapter(groupRepository);
+	public GroupJpaPort getGroupJpaPort(final GroupRepository groupRepository, final UserRepository userRepository) {
+		return new GroupJpaAdapter(groupRepository, userRepository);
 	}
-	
+
 	@Bean
 	public CardJpaPort geCardJpaPort(final CardRepository cardRepository, final UserRepository userRepository) {
 		return new CardJpaAdapter(cardRepository, userRepository);
@@ -61,12 +63,17 @@ public class BookmarkServiceApplication {
 	public UserDomainPort getUserDomainPort(final UserJpaPort userJpaPort, final GroupJpaPort groupJpaPort) {
 		return new UserDomain(userJpaPort);
 	}
-	
+
 	@Bean
 	public CardDomainPort getCardDomainPort(final CardJpaPort cardJpaPort) {
 		return new CardDomain(cardJpaPort);
 	}
-	
+
+	@Bean
+	public GroupDomainPort getGroupDomainPort(final GroupJpaPort groupJpaPort) {
+		return new GroupDomain(groupJpaPort);
+	}
+
 	@Bean
 	public UrlValidator getUrlValidator() {
 		return UrlValidator.getInstance();
