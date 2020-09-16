@@ -30,7 +30,7 @@ public class UserController {
 	@Operation(description = "Get list of users", summary = "Retrive all the users from bookmark service.")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "List of all the users.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = User.class))) })
-	public User getCompanies() {
+	public User getUsers() {
 		return userDomainPort.getUsers();
 	}
 

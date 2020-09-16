@@ -1,5 +1,7 @@
 package com.socgen.bookmark.jpa.port;
 
+import java.util.List;
+
 import com.socgen.bookmark.domain.model.Group;
 import com.socgen.bookmark.domain.model.Group.GroupData;
 
@@ -16,4 +18,8 @@ public interface GroupJpaPort {
 	Group getOtherGroups(String companyContext, String userContext);
 
 	GroupData createGroup(String companyContext, String userContext, GroupData groupData);
+
+	GroupData getGroupByUrlContext(String urlContext);
+
+	GroupData updateGroupAdmins(String urlContext, List<String> userIds);
 }

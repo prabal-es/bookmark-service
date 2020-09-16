@@ -43,7 +43,7 @@ public class CompanyController {
 	}
 
 	@GetMapping("/{url-context}")
-	@Operation(description = "Get details of company", summary = "Retrive all the details of company from bookmark service.")
+	@Operation(description = "Get details of company", summary = "Retrive all the details of a company from bookmark service.")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Company details.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = CompanyData.class))),
 			@ApiResponse(responseCode = "404", description = "Company not exist.", content = @Content) })

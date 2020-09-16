@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.data.domain.Example;
 
 import com.socgen.bookmark.domain.model.Group;
 import com.socgen.bookmark.domain.model.Group.GroupData;
+import com.socgen.bookmark.domain.model.User.UserData;
 import com.socgen.bookmark.jpa.entity.CompanyEntity;
 import com.socgen.bookmark.jpa.entity.GroupEntity;
 import com.socgen.bookmark.jpa.entity.UserEntity;
@@ -74,6 +76,34 @@ public class GroupJpaAdapter implements GroupJpaPort {
 		return data;
 	}
 
+	@Override
+	public GroupData getGroupByUrlContext(String urlContext) {
+		GroupData data = null;
+		Optional<GroupEntity> groupEntityOptional = groupRepository
+				.findOne(Example.of(GroupEntity.builder().urlContext(urlContext).build()));
+		if (groupEntityOptional.isPresent()) {
+			data = mapGroupData(groupEntityOptional.get());
+		}
+		return data;
+	}
+
+	@Override
+	public GroupData updateGroupAdmins(String urlContext, List<String> userIds) {
+		GroupData data = null;
+		Optional<GroupEntity> groupEntityOptional = groupRepository
+				.findOne(Example.of(GroupEntity.builder().urlContext(urlContext).build()));
+		if (groupEntityOptional.isPresent()) {
+			GroupEntity groupEntity = groupEntityOptional.get();
+			groupEntity.getAdminUsers().clear();
+			userIds.forEach(userId -> {
+				groupEntity.getAdminUsers().add(userRepository.getOne(UUID.fromString(userId)));
+			});
+			groupRepository.save(groupEntity);
+			data = mapGroupData(groupEntity);
+		}
+		return data;
+	}
+
 	private boolean getGroupEntityByUrlContext(final String groupContext) {
 		return groupRepository.findOne(Example.of(GroupEntity.builder().urlContext(groupContext).build())).isPresent();
 	}
@@ -87,9 +117,17 @@ public class GroupJpaAdapter implements GroupJpaPort {
 	}
 
 	private GroupData mapGroupData(final GroupEntity groupEntity) {
+		List<UserData> adminUsers = new ArrayList<>();
+		groupEntity.getAdminUsers().forEach(adminUserEntity -> {
+			adminUsers.add(UserData.builder().uuid(adminUserEntity.getUuid().toString()).name(adminUserEntity.getName())
+					.urlContext(adminUserEntity.getUrlContext()).role(adminUserEntity.getRole())
+					.img(adminUserEntity.getImg()).url(adminUserEntity.getUrl()).active(adminUserEntity.getActive())
+					.companyUrlContext(adminUserEntity.getCompany().getUrlContext()).build());
+		});
 		return GroupData.builder().uuid(groupEntity.getUuid().toString()).name(groupEntity.getName())
 				.urlContext(groupEntity.getUrlContext()).img(groupEntity.getImg())
-				.description(groupEntity.getDescription()).active(groupEntity.getActive()).build();
+				.description(groupEntity.getDescription()).active(groupEntity.getActive()).adminUsers(adminUsers)
+				.build();
 	}
 
 }

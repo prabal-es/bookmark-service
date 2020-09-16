@@ -5,6 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.socgen.bookmark.domain.model.User.UserData;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,5 +44,7 @@ public class Group {
 		private String img;
 
 		private Boolean active;
+		
+		private List<UserData> adminUsers;
 	}
 }
