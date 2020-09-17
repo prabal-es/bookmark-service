@@ -89,7 +89,7 @@ INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CRE
 VALUES ('29c1a1f4-96c5-4769-b37a-d39e6bff2afe', 'ES hackathon', 'Engineering stream hackathon problem statement', '811ec2f0', 'https://engineering-stream-hackathon.github.io/challenge/#/', 'https://engineering-stream-hackathon.github.io/challenge/img/engg_stream_hackathon.png',
 'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES ('417246e5-647e-476b-a850-9a1cd56f2fe4', 'Github repositories', 'All the project related repositories.', '9acaf88f', 'https://github.com/prabal-es?tab=repositories', 'https://media.xconomy.com/wordpress/wp-content/images/2016/06/06161811/github-logo.jpg',
+VALUES ('417246e5-647e-476b-a850-9a1cd56f2fe4', 'Github', 'All the project related repositories.', '9acaf88f', 'https://github.com/prabal-es?tab=repositories', 'https://media.xconomy.com/wordpress/wp-content/images/2016/06/06161811/github-logo.jpg',
 'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 
 
