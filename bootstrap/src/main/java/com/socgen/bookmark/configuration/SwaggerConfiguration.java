@@ -52,7 +52,7 @@ public class SwaggerConfiguration {
 	}
 	
 	@Bean
-	public GroupedOpenApi tinyGroupOpenApi() {
+	public GroupedOpenApi cardGroupOpenApi() {
 		String[] paths = { "/api/*/cards*/**" };
 		return GroupedOpenApi.builder().setGroup("Card").pathsToMatch(paths).build();
 	}
@@ -61,5 +61,11 @@ public class SwaggerConfiguration {
 	public GroupedOpenApi groupCardGroupOpenApi() {
 		String[] paths = { "/api/*/groups*/**" };
 		return GroupedOpenApi.builder().setGroup("Group").pathsToMatch(paths).build();
+	}
+	
+	@Bean
+	public GroupedOpenApi tinyGroupOpenApi() {
+		String[] paths = { "/*/*" };
+		return GroupedOpenApi.builder().setGroup("Tiny").pathsToMatch(paths).build();
 	}
 }

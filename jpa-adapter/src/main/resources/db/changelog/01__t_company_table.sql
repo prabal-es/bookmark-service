@@ -73,23 +73,23 @@ CREATE TABLE T_CARD
 	FOREIGN KEY 	(COMAPNY_ID) REFERENCES T_COMPANY(UUID),
 	FOREIGN KEY 	(USER_ID) REFERENCES T_USER(UUID)
 );
-
+--Tiny
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES (uuid_generate_v4(), null, null, 'TEST123', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
+VALUES (uuid_generate_v4(), null, null, 'ad825c6a', 'https://engineering-stream-hackathon.github.io/challenge', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
 'TINY', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES (uuid_generate_v4(), null, null, 'TEST456', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
+VALUES (uuid_generate_v4(), null, null, 'f46c62f2', 'https://gitter.im/engineering-stream-hackathon/community', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
 'TINY', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES (uuid_generate_v4(), null, null, 'TEST789', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
+VALUES (uuid_generate_v4(), null, null, '329ae1b5', 'https://dashboard.heroku.com/', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
 'TINY', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 
-
+--Card
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES ('29c1a1f4-96c5-4769-b37a-d39e6bff2afe', 'TestCard1', 'This is detail DESCRIPTION of 500 length', 'TESTCARD123', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
+VALUES ('29c1a1f4-96c5-4769-b37a-d39e6bff2afe', 'ES hackathon', 'Engineering stream hackathon problem statement', '811ec2f0', 'https://engineering-stream-hackathon.github.io/challenge/#/', 'https://engineering-stream-hackathon.github.io/challenge/img/engg_stream_hackathon.png',
 'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES ('417246e5-647e-476b-a850-9a1cd56f2fe4', 'TestCard2', 'This is detail DESCRIPTION of 500 length', 'TESTCARD456', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
+VALUES ('417246e5-647e-476b-a850-9a1cd56f2fe4', 'Github repositories', 'All the project related repositories.', '9acaf88f', 'https://github.com/prabal-es?tab=repositories', 'https://media.xconomy.com/wordpress/wp-content/images/2016/06/06161811/github-logo.jpg',
 'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 
 

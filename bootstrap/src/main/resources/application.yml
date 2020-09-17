@@ -43,7 +43,7 @@ security:
 springdoc:
   api-docs:    path: /api/v1/api-docs
   swagger-ui:
-    path: /swagger-ui.html
+    path: /api/v1/swagger-ui.html
     operationsSorter: method
     display-request-duration: true
     groups-order: DESC

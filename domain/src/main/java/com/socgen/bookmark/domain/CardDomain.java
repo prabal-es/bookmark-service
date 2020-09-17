@@ -35,4 +35,9 @@ public class CardDomain implements CardDomainPort {
 		return cardJpaPort.createCard(companyContext, userContext, cardData);
 	}
 
+	@Override
+	public String getCardUrl(final String urlContext, final String tinyCode) {
+		return cardJpaPort.getCardUrl(urlContext, tinyCode);
+	}
+
 }

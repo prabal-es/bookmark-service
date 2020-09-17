@@ -37,7 +37,7 @@ public class CardJpaAdapter implements CardJpaPort {
 	}
 
 	@Override
-	public CardData createCard(String companyContext, String userContext, CardData cardData) {
+	public CardData createCard(final String companyContext, final String userContext, CardData cardData) {
 		CardEntity cardEntity = null;
 		Optional<UserEntity> userOptional = userRepository
 				.findOne(Example.of(UserEntity.builder().urlContext(userContext).build()));
@@ -50,6 +50,19 @@ public class CardJpaAdapter implements CardJpaPort {
 			cardEntity = cardRepository.save(cardEntity);
 		}
 		return mapCardData(cardEntity);
+	}
+	
+	@Override
+	public String getCardUrl(final String urlContext, final String tinyCode) {
+		String detailUrl = null;
+		Optional<CardEntity>  cardEntityOptional = cardRepository.findOne(Example.of(CardEntity.builder().tinyUrl(tinyCode).build()));
+		if(cardEntityOptional.isPresent()) {
+			CardEntity entity = cardEntityOptional.get();
+			if(null == entity.getExpireAt() || entity.getExpireAt() >= System.currentTimeMillis()) {
+				detailUrl = entity.getDetailUrl();
+			}
+		}
+		return detailUrl;
 	}
 
 	private Card mapCards(final List<CardEntity> cardEntities) {
