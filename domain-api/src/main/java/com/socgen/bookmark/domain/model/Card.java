@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
@@ -23,10 +22,8 @@ public class Card {
 	private List<CardData> data;
 
 	@AllArgsConstructor
-	@NoArgsConstructor
 	@Builder
 	@Getter
-	@Setter
 	@JsonInclude(value = Include.NON_NULL)
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class CardData {
@@ -37,6 +34,7 @@ public class Card {
 		
 		private String description;
 
+		@Setter
 		private String tinyUrl;
 		
 		private String detailUrl;
@@ -45,8 +43,10 @@ public class Card {
 		
 		private CardType type;
 		
+		@Setter
 		private Long createdAt;
 		
+		@Setter
 		private Long expireAt;
 		
 		private String companyContext;

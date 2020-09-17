@@ -1,6 +1,7 @@
 package com.socgen.bookmark.rest;
 
-import org.assertj.core.api.Assertions;
+import static org.hamcrest.Matchers.hasSize;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,49 +12,87 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 import com.socgen.bookmark.BookmarkServiceApplication;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, /*value = {
-		"spring.datasource.data=classpath*:h2Data/*.sql" },*/ classes = BookmarkServiceApplication.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = BookmarkServiceApplication.class)
 @ActiveProfiles(profiles = "test")
 public class CompanyControllerIntegrationTest {
 
 	@Autowired
 	private WebTestClient webClient;
 
-	/*@Test
+	@Test
 	public void shouldGiveListOfAllCompaniesFromApiTest() {
-		webClient.get().uri("/api/v1/companies").accept(MediaType.APPLICATION_JSON).exchange().expectStatus().isOk().expectBody()
-        .consumeWith(response ->
-        Assertions.assertThat(response.getResponseBody()).isNotNull());
+		webClient.get().uri("/api/v1/companies").accept(MediaType.APPLICATION_JSON).exchange().expectStatus().isOk()
+				.expectHeader().contentType(MediaType.APPLICATION_JSON).expectBody().jsonPath("$.data").isNotEmpty()
+				.jsonPath("$.data", hasSize(2));
 	}
 
 	@Test
 	public void shouldGiveListOfActiveCompaniesFromApiTest() {
-		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies").queryParam("active", "true").build()).exchange().expectStatus().isOk().expectBody()
-        .consumeWith(response ->
-        Assertions.assertThat(response.getResponseBody()).isNotNull());
+		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies").queryParam("active", "true").build())
+				.exchange().expectStatus().isOk().expectHeader().contentType(MediaType.APPLICATION_JSON).expectBody()
+				.jsonPath("$.data").isNotEmpty().jsonPath("$.data", hasSize(2));
 	}
 
 	@Test
 	public void shouldGiveListOfInactiveCompaniesFromApiTest() {
-		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies").queryParam("active", "false").build()).exchange().expectStatus().isOk().expectBody()
-        .consumeWith(response ->
-        Assertions.assertThat(response.getResponseBody()).isNotNull());
-	}
-	
-	@Test
-	public void shouldGiveCompanyDetailsFromApiTest() {
-		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies/629fab9a-0f46-4925-8e25-4037069f7dfd").build()).exchange().expectStatus().isOk().expectBody()
-        .consumeWith(response ->
-        Assertions.assertThat(response.getResponseBody()).isNotNull());
-	}
-	
-	@Test
-	public void shouldGiveBadResponseOnInvalidUuidTest() {
-		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies/01234-56789-123456-789123456-7891234-567").build()).exchange().expectStatus().isBadRequest();
+		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies").queryParam("active", "false").build())
+				.exchange().expectStatus().isOk().expectHeader().contentType(MediaType.APPLICATION_JSON).expectBody()
+				.jsonPath("$.data").isNotEmpty().jsonPath("$.data", hasSize(0));
 	}
 
 	@Test
-	public void shouldGiveNotFoundOnUnknownUuidTest() {
-		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies/629fab9a-0f46-0000-8e25-4037069f7dfd").build()).exchange().expectStatus().isNotFound();
-	}*/
+	public void shouldGiveCompanyDetailsFromApiTest() {
+		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies/soc-gen").build()).exchange()
+				.expectStatus().isOk().expectHeader().contentType(MediaType.APPLICATION_JSON).expectBody()
+				.jsonPath("$").isNotEmpty().jsonPath("$.name").isEqualTo("Societe Generale");
+	}
+
+	@Test
+	public void shouldGiveNotFoundResponseOnInvalidUrlContextTest() {
+		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies/xyz").build()).exchange()
+				.expectStatus().isNotFound();
+	}
+
+
+	@Test
+	public void shouldGiveAllUsersForGivenUrlContextTest() {
+		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies/soc-gen/users").build()).exchange()
+		.expectStatus().isOk().expectHeader().contentType(MediaType.APPLICATION_JSON).expectBody()
+		.jsonPath("$.data").isNotEmpty().jsonPath("$.data", hasSize(3));
+	}
+	
+	@Test
+	public void shouldGiveAllActiveUsersForGivenUrlContextTest() {
+		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies/soc-gen/users").queryParam("active", "true").build()).exchange()
+		.expectStatus().isOk().expectHeader().contentType(MediaType.APPLICATION_JSON).expectBody()
+		.jsonPath("$.data").isNotEmpty().jsonPath("$.data", hasSize(3));
+	}
+	
+	@Test
+	public void shouldGiveAllInactiveUsersForGivenUrlContextTest() {
+		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies/soc-gen/users").queryParam("active", "false").build()).exchange()
+		.expectStatus().isOk().expectHeader().contentType(MediaType.APPLICATION_JSON).expectBody()
+		.jsonPath("$.data",hasSize(0));
+	}
+	
+	@Test
+	public void shouldGiveAllGroupsForGivenUrlContextTest() {
+		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies/soc-gen/groups").build()).exchange()
+				.expectStatus().isOk().expectHeader().contentType(MediaType.APPLICATION_JSON).expectBody()
+				.jsonPath("$.data").isNotEmpty().jsonPath("$.data", hasSize(3));
+	}
+	
+	@Test
+	public void shouldGiveActiveGroupsForGivenUrlContextTest() {
+		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies/soc-gen/groups").queryParam("active", "true").build()).exchange()
+				.expectStatus().isOk().expectHeader().contentType(MediaType.APPLICATION_JSON).expectBody()
+				.jsonPath("$.data").isNotEmpty().jsonPath("$.data", hasSize(3));
+	}
+	
+	@Test
+	public void shouldGiveInctiveGroupsForGivenUrlContextTest() {
+		webClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/companies/soc-gen/groups").queryParam("active", "false").build()).exchange()
+				.expectStatus().isOk().expectHeader().contentType(MediaType.APPLICATION_JSON).expectBody()
+				.jsonPath("$.data", hasSize(3));
+	}
 }
