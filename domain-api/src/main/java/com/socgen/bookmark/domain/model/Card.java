@@ -26,27 +26,34 @@ public class Card {
 	@NoArgsConstructor
 	@Builder
 	@Getter
-	@Setter
 	@JsonInclude(value = Include.NON_NULL)
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class CardData {
 
 		private String uuid;
 
+		@Setter
 		private String name;
 		
+		@Setter
 		private String description;
 
+		@Setter
 		private String tinyUrl;
 		
+		@Setter
 		private String detailUrl;
 		
+		@Setter
 		private String img;
 		
+		@Setter
 		private CardType type;
 		
+		@Setter
 		private Long createdAt;
 		
+		@Setter
 		private Long expireAt;
 		
 		private String companyContext;

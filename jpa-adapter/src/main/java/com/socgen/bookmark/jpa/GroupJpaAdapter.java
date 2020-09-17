@@ -29,7 +29,7 @@ public class GroupJpaAdapter implements GroupJpaPort {
 	private final GroupRepository groupRepository;
 
 	private final UserRepository userRepository;
-	
+
 	private final CardRepository cardRepository;
 
 	@Override
@@ -128,7 +128,7 @@ public class GroupJpaAdapter implements GroupJpaPort {
 		}
 		return data;
 	}
-	
+
 	private boolean getGroupEntityByUrlContext(final String groupContext) {
 		return groupRepository.findOne(Example.of(GroupEntity.builder().urlContext(groupContext).build())).isPresent();
 	}
@@ -151,14 +151,16 @@ public class GroupJpaAdapter implements GroupJpaPort {
 		});
 
 		List<CardData> cardData = new ArrayList<>();
-		groupEntity.getGroupCards().forEach(cardEntity -> {
-			cardData.add(CardData.builder().uuid(cardEntity.getUuid().toString()).name(cardEntity.getName())
-					.description(cardEntity.getDescription()).tinyUrl(cardEntity.getTinyUrl())
-					.detailUrl(cardEntity.getDetailUrl()).img(cardEntity.getImg()).type(cardEntity.getType())
-					.createdAt(cardEntity.getCreatedAt()).expireAt(cardEntity.getExpireAt())
-					.companyContext(cardEntity.getCompany().getUrlContext())
-					.userContext(cardEntity.getUser().getUrlContext()).active(cardEntity.getActive()).build());
-		});
+		if (null != groupEntity.getGroupCards()) {
+			groupEntity.getGroupCards().forEach(cardEntity -> {
+				cardData.add(CardData.builder().uuid(cardEntity.getUuid().toString()).name(cardEntity.getName())
+						.description(cardEntity.getDescription()).tinyUrl(cardEntity.getTinyUrl())
+						.detailUrl(cardEntity.getDetailUrl()).img(cardEntity.getImg()).type(cardEntity.getType())
+						.createdAt(cardEntity.getCreatedAt()).expireAt(cardEntity.getExpireAt())
+						.companyContext(cardEntity.getCompany().getUrlContext())
+						.userContext(cardEntity.getUser().getUrlContext()).active(cardEntity.getActive()).build());
+			});
+		}
 
 		return GroupData.builder().uuid(groupEntity.getUuid().toString()).name(groupEntity.getName())
 				.urlContext(groupEntity.getUrlContext()).img(groupEntity.getImg())
