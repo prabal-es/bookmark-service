@@ -40,14 +40,32 @@ public class SwaggerConfiguration {
 	}
 
 	@Bean
-	public GroupedOpenApi companyGorupOpenApi() {
-		String[] paths = { "/**/companies*/**" };
+	public GroupedOpenApi companyGroupOpenApi() {
+		String[] paths = { "/api/*/companies*/**" };
 		return GroupedOpenApi.builder().setGroup("Company").pathsToMatch(paths).build();
 	}
 	
 	@Bean
-	public GroupedOpenApi hello2GorupOpenApi() {
-		String[] paths = { "/**/hello2**" };
-		return GroupedOpenApi.builder().setGroup("Hello-2").pathsToMatch(paths).build();
+	public GroupedOpenApi userGroupOpenApi() {
+		String[] paths = { "/api/*/users*/**" };
+		return GroupedOpenApi.builder().setGroup("User").pathsToMatch(paths).build();
+	}
+	
+	@Bean
+	public GroupedOpenApi cardGroupOpenApi() {
+		String[] paths = { "/api/*/cards*/**" };
+		return GroupedOpenApi.builder().setGroup("Card").pathsToMatch(paths).build();
+	}
+	
+	@Bean
+	public GroupedOpenApi groupCardGroupOpenApi() {
+		String[] paths = { "/api/*/groups*/**" };
+		return GroupedOpenApi.builder().setGroup("Group").pathsToMatch(paths).build();
+	}
+	
+	@Bean
+	public GroupedOpenApi tinyGroupOpenApi() {
+		String[] paths = { "/*/*" };
+		return GroupedOpenApi.builder().setGroup("Tiny").pathsToMatch(paths).build();
 	}
 }

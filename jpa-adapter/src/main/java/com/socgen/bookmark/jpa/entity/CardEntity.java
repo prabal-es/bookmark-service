@@ -1,33 +1,37 @@
 package com.socgen.bookmark.jpa.entity;
 
 import java.io.Serializable;
-import java.util.Set;
 import java.util.UUID;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.socgen.bookmark.domain.model.Card.CardType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @Builder
 @Getter
 @Entity
 @NoArgsConstructor
-@Table(name = "t_company")
-public class CompanyEntity implements Serializable {
+@Table(name = "t_card")
+public class CardEntity implements Serializable {
 
 	private static final long serialVersionUID = -6623648340723904656L;
 
@@ -41,28 +45,37 @@ public class CompanyEntity implements Serializable {
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "url_context")
-	private String urlContext;
-
 	@Column(name = "description")
 	private String description;
 	
+	@Column(name = "tiny_url")
+	private String tinyUrl;
+
+	@Column(name = "detail_url")
+	private String detailUrl;
+
 	@Column(name = "img")
 	private String img;
 	
-	@Column(name = "url")
-	private String url;
-
 	@Column(name = "active")
 	private Boolean active;
 	
-	@OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "company")
-    private Set<UserEntity> users;
+	@Column(name = "type", columnDefinition = "VARCHAR(10)")
+	@Enumerated(EnumType.STRING)
+	private CardType type;
 	
-	@OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "company")
-    private Set<GroupEntity> groups;
+	@Column(name = "created_at")
+	private Long createdAt;
+	
+	@Setter
+	@Column(name = "expire_at")
+	private Long expireAt;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "COMAPNY_ID", nullable = false)
+	private CompanyEntity company;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "USER_ID", nullable = false)
+	private UserEntity user;
 }

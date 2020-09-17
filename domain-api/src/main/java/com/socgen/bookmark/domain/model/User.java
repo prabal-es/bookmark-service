@@ -13,24 +13,26 @@ import lombok.Getter;
 @AllArgsConstructor
 @Builder
 @Getter
-public class Company {
-
-	private List<CompanyData> data;
+public class User {
+	public enum Role {
+		ADMIN, USER
+	};
+	private List<UserData> data;
 
 	@AllArgsConstructor
 	@Builder
 	@Getter
 	@JsonInclude(value = Include.NON_NULL)
 	@JsonIgnoreProperties(ignoreUnknown = true)
-	public static class CompanyData {
+	public static class UserData {
 
 		private String uuid;
 
 		private String name;
-		
-		private String urlContext;
 
-		private String description;
+		private String urlContext;
+		
+		private Role role;
 		
 		private String img;
 		
@@ -38,8 +40,6 @@ public class Company {
 
 		private Boolean active;
 		
-		private Integer userCount;
-		
-		private Integer groupCount;
+		private String companyUrlContext;
 	}
 }

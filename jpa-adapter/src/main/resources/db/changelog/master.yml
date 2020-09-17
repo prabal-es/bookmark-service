@@ -6,9 +6,36 @@ databaseChangeLog:
     context: Company
     labels: InitialCommit
     comment: Initial changes for company table
+    preConditions:
+    - or:
+        - dbms:
+            type: postgresql
+      onFail: CONTINUE
     changes:
     - sqlFile:
         path: ./01__t_company_table.sql
+        relativeToChangelogFile: true
+    - tagDatabase:
+        tag: 0.0.1
+    rollback:
+    - sqlFile:
+        path: rollback/01__t_company_table.sql
+        relativeToChangelogFile: true
+- changeSet:
+    id: 1
+    author: Prabal Srivastava
+    logicalFilePath: release-01-01__t_company_table_h2.sql
+    context: Company
+    labels: InitialCommit
+    comment: Initial changes for company table
+    preConditions:
+    - or:
+        - dbms:
+            type: h2
+      onFail: CONTINUE
+    changes:
+    - sqlFile:
+        path: ./01__t_company_table_h2.sql
         relativeToChangelogFile: true
     - tagDatabase:
         tag: 0.0.1

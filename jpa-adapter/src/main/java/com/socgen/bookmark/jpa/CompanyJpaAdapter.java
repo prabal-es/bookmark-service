@@ -3,7 +3,6 @@ package com.socgen.bookmark.jpa;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.data.domain.Example;
 
@@ -38,8 +37,9 @@ public class CompanyJpaAdapter implements CompanyJpaPort {
 	}
 
 	@Override
-	public CompanyData getCompanyByUuid(final String uuid) {
-		Optional<CompanyEntity> companyEntityOptional = companyRepository.findById(UUID.fromString(uuid));
+	public CompanyData getCompanyByUrlContext(final String urlContext) {
+		Optional<CompanyEntity> companyEntityOptional = companyRepository
+				.findOne((Example.of(CompanyEntity.builder().urlContext(urlContext).build())));
 		if (companyEntityOptional.isPresent()) {
 			return mapCompanyData(companyEntityOptional.get());
 		} else {
@@ -49,7 +49,9 @@ public class CompanyJpaAdapter implements CompanyJpaPort {
 
 	private CompanyData mapCompanyData(final CompanyEntity companyEntity) {
 		return CompanyData.builder().uuid(companyEntity.getUuid().toString()).name(companyEntity.getName())
-				.description(companyEntity.getDescription()).active(companyEntity.isActive()).build();
+				.urlContext(companyEntity.getUrlContext()).description(companyEntity.getDescription())
+				.img(companyEntity.getImg()).url(companyEntity.getUrl()).active(companyEntity.getActive())
+				.userCount(companyEntity.getUsers().size()).groupCount(companyEntity.getGroups().size()).build();
 	}
 
 	private Company mapCompanies(final List<CompanyEntity> companyEntities) {

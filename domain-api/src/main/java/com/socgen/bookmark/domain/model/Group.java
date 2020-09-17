@@ -5,41 +5,49 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.socgen.bookmark.domain.model.Card.CardData;
+import com.socgen.bookmark.domain.model.User.UserData;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @Builder
 @Getter
-public class Company {
-
-	private List<CompanyData> data;
+public class Group {
+	
+	public enum GroupType {
+		SELF, ALL, OTHER
+	};
+	
+	private List<GroupData> data;
 
 	@AllArgsConstructor
+	@NoArgsConstructor
 	@Builder
 	@Getter
 	@JsonInclude(value = Include.NON_NULL)
 	@JsonIgnoreProperties(ignoreUnknown = true)
-	public static class CompanyData {
+	public static class GroupData {
 
 		private String uuid;
 
 		private String name;
-		
-		private String urlContext;
 
+		@Setter
+		private String urlContext;
+		
 		private String description;
 		
 		private String img;
-		
-		private String url;
 
 		private Boolean active;
 		
-		private Integer userCount;
+		private List<UserData> adminUsers;
 		
-		private Integer groupCount;
+		private List<CardData> cards;
 	}
 }

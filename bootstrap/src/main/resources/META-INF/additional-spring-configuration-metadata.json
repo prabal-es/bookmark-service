@@ -53,5 +53,10 @@
     "name": "springdoc.swagger-ui.info.contactEmail",
     "type": "java.lang.String",
     "description": "A description for 'springdoc.swagger-ui.info.contactEmail'"
+  },
+  {
+    "name": "spring.jpa.hibernate.connection.provider_class",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.hibernate.connection.provider_class'"
   }
 ]}
