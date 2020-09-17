@@ -44,8 +44,8 @@ public class BookmarkServiceApplication {
 	}
 
 	@Bean
-	public GroupJpaPort getGroupJpaPort(final GroupRepository groupRepository, final UserRepository userRepository) {
-		return new GroupJpaAdapter(groupRepository, userRepository);
+	public GroupJpaPort getGroupJpaPort(final GroupRepository groupRepository, final UserRepository userRepository, final CardRepository cardRepository) {
+		return new GroupJpaAdapter(groupRepository, userRepository, cardRepository);
 	}
 
 	@Bean

@@ -5,6 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.socgen.bookmark.domain.model.Card.CardData;
 import com.socgen.bookmark.domain.model.User.UserData;
 
 import lombok.AllArgsConstructor;
@@ -46,5 +47,7 @@ public class Group {
 		private Boolean active;
 		
 		private List<UserData> adminUsers;
+		
+		private List<CardData> cards;
 	}
 }

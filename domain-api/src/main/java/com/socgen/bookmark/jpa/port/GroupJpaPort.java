@@ -22,4 +22,6 @@ public interface GroupJpaPort {
 	GroupData getGroupByUrlContext(String urlContext);
 
 	GroupData updateGroupAdmins(String urlContext, List<String> userIds);
+
+	GroupData updateGroupCards(String urlContext, List<String> cardIds);
 }

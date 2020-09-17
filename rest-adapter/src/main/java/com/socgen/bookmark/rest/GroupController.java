@@ -95,4 +95,20 @@ public class GroupController {
 		}
 		return ResponseEntity.status(200).body(groupData);
 	}
+
+	@PostMapping("/{url-context}/cards")
+	@Operation(description = "Update group cards for the given group", summary = "Update group cards for the given group in bookmark service.")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Group cards updated successfully for the given user.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = GroupData.class))),
+			@ApiResponse(responseCode = "404", description = "Group not exist.", content = @Content) })
+	public ResponseEntity<GroupData> updateGroupCards(
+			@Parameter(description = "URL context id of a group") @PathVariable(name = "url-context", required = false) final String urlContext,
+			@RequestBody List<String> cardIds) {
+
+		GroupData groupData = groupDomainPort.updateGroupCards(urlContext, cardIds);
+		if (null == groupData) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.status(200).body(groupData);
+	}
 }

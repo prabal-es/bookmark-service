@@ -8,13 +8,16 @@ import java.util.UUID;
 
 import org.springframework.data.domain.Example;
 
+import com.socgen.bookmark.domain.model.Card.CardData;
 import com.socgen.bookmark.domain.model.Group;
 import com.socgen.bookmark.domain.model.Group.GroupData;
 import com.socgen.bookmark.domain.model.User.UserData;
+import com.socgen.bookmark.jpa.entity.CardEntity;
 import com.socgen.bookmark.jpa.entity.CompanyEntity;
 import com.socgen.bookmark.jpa.entity.GroupEntity;
 import com.socgen.bookmark.jpa.entity.UserEntity;
 import com.socgen.bookmark.jpa.port.GroupJpaPort;
+import com.socgen.bookmark.jpa.repository.CardRepository;
 import com.socgen.bookmark.jpa.repository.GroupRepository;
 import com.socgen.bookmark.jpa.repository.UserRepository;
 
@@ -26,6 +29,8 @@ public class GroupJpaAdapter implements GroupJpaPort {
 	private final GroupRepository groupRepository;
 
 	private final UserRepository userRepository;
+	
+	private final CardRepository cardRepository;
 
 	@Override
 	public Group getCompanyGroups(String comapnyUrlContext) {
@@ -104,6 +109,26 @@ public class GroupJpaAdapter implements GroupJpaPort {
 		return data;
 	}
 
+	@Override
+	public GroupData updateGroupCards(String urlContext, List<String> cardIds) {
+		GroupData data = null;
+		Optional<GroupEntity> groupEntityOptional = groupRepository
+				.findOne(Example.of(GroupEntity.builder().urlContext(urlContext).build()));
+		if (groupEntityOptional.isPresent()) {
+			GroupEntity groupEntity = groupEntityOptional.get();
+			groupEntity.getGroupCards().clear();
+			cardIds.forEach(cardId -> {
+				CardEntity cardEntity = cardRepository.getOne(UUID.fromString(cardId));
+				cardEntity.setExpireAt(null);
+				cardRepository.save(cardEntity);
+				groupEntity.getGroupCards().add(cardEntity);
+			});
+			groupRepository.save(groupEntity);
+			data = mapGroupData(groupEntity);
+		}
+		return data;
+	}
+	
 	private boolean getGroupEntityByUrlContext(final String groupContext) {
 		return groupRepository.findOne(Example.of(GroupEntity.builder().urlContext(groupContext).build())).isPresent();
 	}
@@ -124,10 +149,21 @@ public class GroupJpaAdapter implements GroupJpaPort {
 					.img(adminUserEntity.getImg()).url(adminUserEntity.getUrl()).active(adminUserEntity.getActive())
 					.companyUrlContext(adminUserEntity.getCompany().getUrlContext()).build());
 		});
+
+		List<CardData> cardData = new ArrayList<>();
+		groupEntity.getGroupCards().forEach(cardEntity -> {
+			cardData.add(CardData.builder().uuid(cardEntity.getUuid().toString()).name(cardEntity.getName())
+					.description(cardEntity.getDescription()).tinyUrl(cardEntity.getTinyUrl())
+					.detailUrl(cardEntity.getDetailUrl()).img(cardEntity.getImg()).type(cardEntity.getType())
+					.createdAt(cardEntity.getCreatedAt()).expireAt(cardEntity.getExpireAt())
+					.companyContext(cardEntity.getCompany().getUrlContext())
+					.userContext(cardEntity.getUser().getUrlContext()).active(cardEntity.getActive()).build());
+		});
+
 		return GroupData.builder().uuid(groupEntity.getUuid().toString()).name(groupEntity.getName())
 				.urlContext(groupEntity.getUrlContext()).img(groupEntity.getImg())
 				.description(groupEntity.getDescription()).active(groupEntity.getActive()).adminUsers(adminUsers)
-				.build();
+				.cards(cardData).build();
 	}
 
 }

@@ -76,20 +76,20 @@ CREATE TABLE T_CARD
 
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
 VALUES (uuid_generate_v4(), null, null, 'TEST123', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
-'TINY', 1600166936000, '1700166936000', true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
+'TINY', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
 VALUES (uuid_generate_v4(), null, null, 'TEST456', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
-'TINY', 1600166936000, '1800166937000', true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
+'TINY', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
 VALUES (uuid_generate_v4(), null, null, 'TEST789', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
 'TINY', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 
 
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES (uuid_generate_v4(), 'TestCard1', 'This is detail DESCRIPTION of 500 length', 'TESTCARD123', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
-'CARD', 1600166936000, '1700166936000', true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
+VALUES ('29c1a1f4-96c5-4769-b37a-d39e6bff2afe', 'TestCard1', 'This is detail DESCRIPTION of 500 length', 'TESTCARD123', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
+'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES (uuid_generate_v4(), 'TestCard2', 'This is detail DESCRIPTION of 500 length', 'TESTCARD456', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
+VALUES ('417246e5-647e-476b-a850-9a1cd56f2fe4', 'TestCard2', 'This is detail DESCRIPTION of 500 length', 'TESTCARD456', 'http://www.google.com', 'https://media-exp1.licdn.com/dms/image/C5103AQHOMMN3dmz8fQ/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=ieUBHGr4nYtL4i5OrIxxe8fMtNUSwWjcq9qBMJfgURg',
 'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 
 
@@ -106,8 +106,15 @@ INSERT INTO T_USER_GROUP(GROUP_ID, USER_ID) VALUES ('6e4cf9e1-8710-4f80-9aa5-3cd
 --INSERT INTO T_USER_GROUP(GROUP_ID, USER_ID) VALUES ('6c440055-7e30-4847-b446-22706895c9df', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 
 
+CREATE TABLE T_CARD_GROUP --this table for group admin mapping
+(
+	GROUP_ID		UUID NOT NULL,
+	CARD_ID			UUID NOT NULL,
+	FOREIGN KEY 	(GROUP_ID) REFERENCES T_GROUP(UUID),
+	FOREIGN KEY 	(CARD_ID) REFERENCES T_CARD(UUID)
+);
 
-
-
+INSERT INTO T_CARD_GROUP(GROUP_ID, CARD_ID) VALUES ('2cb44d2a-63b1-4aad-8957-44c3203bea76', '29c1a1f4-96c5-4769-b37a-d39e6bff2afe');
+INSERT INTO T_CARD_GROUP(GROUP_ID, CARD_ID) VALUES ('2cb44d2a-63b1-4aad-8957-44c3203bea76', '417246e5-647e-476b-a850-9a1cd56f2fe4');
 
 

@@ -23,6 +23,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @Builder
@@ -66,6 +67,7 @@ public class CardEntity implements Serializable {
 	@Column(name = "created_at")
 	private Long createdAt;
 	
+	@Setter
 	@Column(name = "expire_at")
 	private Long expireAt;
 

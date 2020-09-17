@@ -38,8 +38,13 @@ public class GroupDomain implements GroupDomainPort {
 	}
 
 	@Override
-	public GroupData updateGroupAdmins(String urlContext, List<String> userIds) {
+	public GroupData updateGroupAdmins(final String urlContext, final List<String> userIds) {
 		return groupJpaPort.updateGroupAdmins(urlContext, userIds);
+	}
+
+	@Override
+	public GroupData updateGroupCards(final String urlContext, final List<String> cardIds) {
+		return groupJpaPort.updateGroupCards(urlContext, cardIds);
 	}
 
 }

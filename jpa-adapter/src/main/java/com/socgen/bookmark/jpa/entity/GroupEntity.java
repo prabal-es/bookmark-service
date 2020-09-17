@@ -65,4 +65,11 @@ public class GroupEntity implements Serializable {
 	  joinColumns = @JoinColumn(name = "GROUP_ID"), 
 	  inverseJoinColumns = @JoinColumn(name = "USER_ID"))
 	private Set<UserEntity> adminUsers;
+	
+	@ManyToMany
+	@JoinTable(
+	  name = "T_CARD_GROUP", 
+	  joinColumns = @JoinColumn(name = "GROUP_ID"), 
+	  inverseJoinColumns = @JoinColumn(name = "CARD_ID"))
+	private Set<CardEntity> groupCards;
 }
