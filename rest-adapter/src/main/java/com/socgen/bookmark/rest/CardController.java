@@ -57,7 +57,7 @@ public class CardController {
 			@Parameter(description = "Company URL context") @RequestHeader(name = "company-context") final String companyContext,
 			@Parameter(description = "User URL context") @RequestHeader(name = "user-context") final String userContext,
 			@RequestBody CardData cardData) {
-		if (cardData.getType() == CardType.TINY && !urlValidator.isValid(cardData.getDetailUrl())
+		if (!urlValidator.isValid(cardData.getDetailUrl())
 				|| cardData.getDetailUrl().length() > 2083) {
 			return ResponseEntity.badRequest().build();
 		} else {

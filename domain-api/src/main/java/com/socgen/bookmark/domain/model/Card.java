@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
@@ -22,6 +23,7 @@ public class Card {
 	private List<CardData> data;
 
 	@AllArgsConstructor
+	@NoArgsConstructor
 	@Builder
 	@Getter
 	@JsonInclude(value = Include.NON_NULL)
@@ -30,17 +32,22 @@ public class Card {
 
 		private String uuid;
 
+		@Setter
 		private String name;
 		
+		@Setter
 		private String description;
 
 		@Setter
 		private String tinyUrl;
 		
+		@Setter
 		private String detailUrl;
 		
+		@Setter
 		private String img;
 		
+		@Setter
 		private CardType type;
 		
 		@Setter

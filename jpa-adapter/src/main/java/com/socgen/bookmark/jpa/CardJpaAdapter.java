@@ -46,19 +46,20 @@ public class CardJpaAdapter implements CardJpaPort {
 			cardEntity = CardEntity.builder().name(cardData.getName()).description(cardData.getDescription())
 					.tinyUrl(cardData.getTinyUrl()).detailUrl(cardData.getDetailUrl()).img(cardData.getImg())
 					.type(cardData.getType()).createdAt(cardData.getCreatedAt()).expireAt(cardData.getExpireAt())
-					.user(user).company(user.getCompany()).build();
+					.active(true).user(user).company(user.getCompany()).build();
 			cardEntity = cardRepository.save(cardEntity);
 		}
 		return mapCardData(cardEntity);
 	}
-	
+
 	@Override
 	public String getCardUrl(final String urlContext, final String tinyCode) {
 		String detailUrl = null;
-		Optional<CardEntity>  cardEntityOptional = cardRepository.findOne(Example.of(CardEntity.builder().tinyUrl(tinyCode).build()));
-		if(cardEntityOptional.isPresent()) {
+		Optional<CardEntity> cardEntityOptional = cardRepository
+				.findOne(Example.of(CardEntity.builder().tinyUrl(tinyCode).build()));
+		if (cardEntityOptional.isPresent()) {
 			CardEntity entity = cardEntityOptional.get();
-			if(null == entity.getExpireAt() || entity.getExpireAt() >= System.currentTimeMillis()) {
+			if (null == entity.getExpireAt() || entity.getExpireAt() >= System.currentTimeMillis()) {
 				detailUrl = entity.getDetailUrl();
 			}
 		}
