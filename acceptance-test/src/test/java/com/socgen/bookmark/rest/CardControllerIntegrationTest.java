@@ -56,14 +56,22 @@ public class CardControllerIntegrationTest {
 				.accept(MediaType.APPLICATION_JSON).exchange().expectStatus().isCreated().expectHeader()
 				.contentType(MediaType.APPLICATION_JSON).expectBody().jsonPath("$.name").isEqualTo("TEST Tiny");
 	}
-	
+
 	@Test
-	public void shouldGiveBadRequestFoInvalidUrlTest() {
+	public void shouldCreateNewTinyWithExpireyOfOneMinsForUserFromApiTest() {
 		webClient.post().uri("/api/v1/cards").header("company-context", "soc-gen").header("user-context", "anshu")
 				.contentType(MediaType.APPLICATION_JSON)
 				.bodyValue(CardData.builder().type(CardType.TINY).description("This is test card").name("TEST Tiny")
-						.detailUrl("invalid url").build())
+						.detailUrl("http://www.google.com").expireAt(System.currentTimeMillis() + 60000).build())
 				.accept(MediaType.APPLICATION_JSON).exchange().expectStatus().isCreated().expectHeader()
 				.contentType(MediaType.APPLICATION_JSON).expectBody().jsonPath("$.name").isEqualTo("TEST Tiny");
+	}
+
+	@Test
+	public void shouldGiveBadRequestFoInvalidUrlTest() {
+		webClient.post().uri("/api/v1/cards").header("company-context", "soc-gen").header("user-context", "anshu")
+				.contentType(MediaType.APPLICATION_JSON).bodyValue(CardData.builder().type(CardType.TINY)
+						.description("This is test card").name("TEST Tiny").detailUrl("invalid url").build())
+				.exchange().expectStatus().isBadRequest();
 	}
 }
