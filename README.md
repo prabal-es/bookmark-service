@@ -24,5 +24,27 @@ java -jar -Dspring.profiles.active=test ./bootstrap/target/bootstrap-0.0.1-SNAPS
 ```
 You can then access bookmark-service here: [Open API](http://localhost:8080/api/v1/swagger-ui.html)
 
-## Database details
+## Database setup:
+If you want to connect to Postgres database, then you need to update the `.\bootstrap\src\main\resources\application.yml` file from line number 7 to 11:
+```
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=bookmark
+    username: postgres
+    password: postgres
+```
+and again build it and run it without `test` profile. Example:
+```
+git clone https://github.com/prabal-es/bookmark-service.git
+
+cd bookmark-service
+
+mvn clean package
+
+java -jar ./bootstrap/target/bootstrap-0.0.1-SNAPSHOT-exec.jar
+```
+
+
+
+
 
