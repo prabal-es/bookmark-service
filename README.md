@@ -67,6 +67,21 @@ For this service we are having 5 rest definition:
 
 > For tiny code generation we are using [MurmurHash3 32](https://en.wikipedia.org/wiki/MurmurHash) algorithm, which will create 8 digit of unique code.
 
+## List of technologies used
+- Java 11 
+- Maven
+- Spring 5.3.4
+- Spring Boot 2.3.3
+- Swagger open API
+- Lombok
+- H2 DB
+- Liquibase 3.8.7
+- Jacoco 0.8.5
+- Google guava
+- Docker
+- Circleci [CI build]
+- Codecov [CI code coverage ]
+- HeroKu CD
 
 ## Running application details: 
 - **Swagger URL**: https://bookmark-service-9.herokuapp.com/api/v1/swagger-ui.html
@@ -81,6 +96,7 @@ For this service we are having 5 rest definition:
 > Note: Heroku Dyno shutdown if not in use. So First time when you hit the running app it will take longer time but once the Dyno starts it will run fine.
 > Heroku Dyno JVM is running on 128 MB due to memory leak issue.
 
-
+## Improvment:
+> Need to added redis server for fast tiny redirect.
 
   
