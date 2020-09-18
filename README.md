@@ -10,3 +10,19 @@ With bookmark service, you can save favorite webpages, tinify URL, share-it, man
 - A normal user i.e. not an admin user can suggest changes to an existing card. The changes are to be queued in order to be approved by the group's admin user(s).
 - User will be able to share the group page enlisting all the cards of that group
 - Admin user(s) will be able to import or export
+
+## Running locally[without any database setup]:
+```
+git clone https://github.com/prabal-es/bookmark-service.git
+
+cd bookmark-service
+
+mvn clean package
+
+java -jar -Dspring.profiles.active=test ./bootstrap/target/bootstrap-0.0.1-SNAPSHOT-exec.jar
+
+```
+You can then access bookmark-service here: [Open API](http://localhost:8080/api/v1/swagger-ui.html)
+
+## Database details
+
