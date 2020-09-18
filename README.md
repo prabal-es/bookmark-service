@@ -82,7 +82,7 @@ For this service we are having 5 rest definition:
 ## Running application details: 
 - **Swagger URL**: https://bookmark-service-9.herokuapp.com/api/v1/swagger-ui.html
 - **CircleCI URL**: https://app.circleci.com/pipelines/github/prabal-es/bookmark-service
-- **Codecov URL**: https://app.codacy.com/manual/prabal-es/bookmark-service/dashboard
+- **Codecov URL**: https://codecov.io/gh/prabal-es/bookmark-service
 - **Codacy URL**: https://app.codacy.com/manual/prabal-es/bookmark-service/dashboard
 - **Heroku URL**: https://dashboard.heroku.com/apps/bookmark-service-9
 - **Build Packages**: https://github.com/prabal-es/bookmark-service/packages
