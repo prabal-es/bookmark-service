@@ -35,10 +35,6 @@ If you want to connect to Postgres database, then you need to update the `.\boot
 ```
 and again build it and run it without `test` profile. Example:
 ```
-git clone https://github.com/prabal-es/bookmark-service.git
-
-cd bookmark-service
-
 mvn clean package
 
 java -jar ./bootstrap/target/bootstrap-0.0.1-SNAPSHOT-exec.jar
