@@ -65,16 +65,16 @@ For this service we are having 5 rest definition:
 
 ![Rest definition](https://github.com/prabal-es/bookmark-service/blob/development/.github/docs/rest_definition.png?raw=true)
 
-> For tiny code generation we are using [MurmurHash3](https://en.wikipedia.org/wiki/MurmurHash) algorithm, which will create 8 digit of unique code.
+> For tiny code generation we are using [MurmurHash3 32](https://en.wikipedia.org/wiki/MurmurHash) algorithm, which will create 8 digit of unique code.
 
 
 ## Running application details: 
 - **Swagger URL**: https://bookmark-service-9.herokuapp.com/api/v1/swagger-ui.html
-- **CircleCI URL: https://app.circleci.com/pipelines/github/prabal-es/bookmark-service
-- **Codecov URL: https://app.codacy.com/manual/prabal-es/bookmark-service/dashboard
-- **Codacy URL: https://app.codacy.com/manual/prabal-es/bookmark-service/dashboard
-- **Heroku URL: https://dashboard.heroku.com/apps/bookmark-service-9
-- **Build Packages: https://github.com/prabal-es/bookmark-service/packages
+- **CircleCI URL**: https://app.circleci.com/pipelines/github/prabal-es/bookmark-service
+- **Codecov URL**: https://app.codacy.com/manual/prabal-es/bookmark-service/dashboard
+- **Codacy URL**: https://app.codacy.com/manual/prabal-es/bookmark-service/dashboard
+- **Heroku URL**: https://dashboard.heroku.com/apps/bookmark-service-9
+- **Build Packages**: https://github.com/prabal-es/bookmark-service/packages
 - Dependent UI project GitHub URL[**Bookmark UI**]: https://github.com/prabal-es/bookmark-ui
 - Dependent UI project **running** link: https://bookmark-9.herokuapp.com
 
