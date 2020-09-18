@@ -43,19 +43,43 @@ mvn clean package
 
 java -jar ./bootstrap/target/bootstrap-0.0.1-SNAPSHOT-exec.jar
 ```
+## Hexagonal Architecture
+In this project we have used Hexagonal Architecture with domain driven design.
+#### Hexagonal Architecture
+![Hexagonal Architecture](https://stefanoalletti.files.wordpress.com/2017/10/clean-architecture.png?w=590&h=333)
+
+For more information: [Click Me](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
+
+#### Domain driven design: [Click Me](https://en.wikipedia.org/wiki/Domain-driven_design)
 
 ## Database ER diagram:
 ![Database ER diagram](https://github.com/prabal-es/bookmark-service/blob/development/.github/docs/db.svg?raw=true)
 
+## Rest definition:
+For this service we are having 5 rest definition:
+- **Company** : Operations related to company model. Such as getAllCompanies, getComyanyDetails, getAllCompanyUsers, getAllCompanyGroups. 
+- **User**: Operations related to user model. Such as getAllUsers.
+- **Group**: Operations related to group model. Such as retrieving, creating or mapping cards and users.
+- **Card**: Operations related to card model. Such as retrieving or creating cards.
+- **Tiny**: Tiny is used for handling the tiny code redirect. `308 Permanent redirect` is used for valid tiny code.
+
+![Rest definition](https://github.com/prabal-es/bookmark-service/blob/development/.github/docs/rest_definition.png?raw=true)
+
+> For tiny code generation we are using [MurmurHash3](https://en.wikipedia.org/wiki/MurmurHash) algorithm, which will create 8 digit of unique code.
+
+
 ## Running application details: 
-- Swagger URL: https://bookmark-service-9.herokuapp.com/api/v1/swagger-ui.html
-- CircleCI URL: https://app.circleci.com/pipelines/github/prabal-es/bookmark-service
-- Codecov URL: https://app.codacy.com/manual/prabal-es/bookmark-service/dashboard
-- Codacy URL: https://app.codacy.com/manual/prabal-es/bookmark-service/dashboard
-- Heroku URL: https://dashboard.heroku.com/apps/bookmark-service-9
-- Build Packages: https://github.com/prabal-es/bookmark-service/packages
-- Dependent UI project GitHub URL[Bookmark UI]: https://github.com/prabal-es/bookmark-ui
-- Dependent UI project running link: https://bookmark-9.herokuapp.com
+- **Swagger URL**: https://bookmark-service-9.herokuapp.com/api/v1/swagger-ui.html
+- **CircleCI URL: https://app.circleci.com/pipelines/github/prabal-es/bookmark-service
+- **Codecov URL: https://app.codacy.com/manual/prabal-es/bookmark-service/dashboard
+- **Codacy URL: https://app.codacy.com/manual/prabal-es/bookmark-service/dashboard
+- **Heroku URL: https://dashboard.heroku.com/apps/bookmark-service-9
+- **Build Packages: https://github.com/prabal-es/bookmark-service/packages
+- Dependent UI project GitHub URL[**Bookmark UI**]: https://github.com/prabal-es/bookmark-ui
+- Dependent UI project **running** link: https://bookmark-9.herokuapp.com
+
+> Note: Heroku Dyno shutdown if not in use. So First time when you hit the running app it will take longer time but once the Dyno starts it will run fine.
+> Heroku Dyno JVM is running on 128 MB due to memory leak issue.
 
 
 
