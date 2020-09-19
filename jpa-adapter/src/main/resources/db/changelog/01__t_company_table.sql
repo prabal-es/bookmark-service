@@ -51,7 +51,7 @@ CREATE TABLE T_GROUP
 
 INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('2cb44d2a-63b1-4aad-8957-44c3203bea76', 'RMO-SGL', 'rmo-sgl', 'RMO SGL Tribe Group.', 'https://reciprocitylabs.com/wp-content/uploads/2019/09/bigstock-Risk-management-in-word-tag-cl-21022796-768x584.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
 INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6e4cf9e1-8710-4f80-9aa5-3cd3bc0c58a9', 'Achilles', 'achilles', 'A feature team of conflict clearance.', 'https://adamnijhawan.weebly.com/uploads/3/8/0/6/38061047/980837259.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
-INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6c440055-7e30-4847-b446-22706895c9df', 'Engineering Stream', 'engineering-stream', 'On going hackathon.', 'https://engineering-stream-hackathon.github.io/challenge/img/engg_stream_hackathon.png', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
+INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6c440055-7e30-4847-b446-22706895c9df', 'Engineering Stream', 'engineering-stream', 'On going hackathon.', 'https://bookmark-9.herokuapp.com/assets/engg_stream_hackathon.png', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
 
 
 
@@ -86,7 +86,7 @@ VALUES (uuid_generate_v4(), null, null, '329ae1b5', 'https://dashboard.heroku.co
 
 --Card
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES ('29c1a1f4-96c5-4769-b37a-d39e6bff2afe', 'ES hackathon', 'Engineering stream hackathon problem statement', '811ec2f0', 'https://engineering-stream-hackathon.github.io/challenge/#/', 'https://engineering-stream-hackathon.github.io/challenge/img/engg_stream_hackathon.png',
+VALUES ('29c1a1f4-96c5-4769-b37a-d39e6bff2afe', 'ES hackathon', 'Engineering stream hackathon problem statement', '811ec2f0', 'https://engineering-stream-hackathon.github.io/challenge/#/', 'https://bookmark-9.herokuapp.com/assets/engg_stream_hackathon.png',
 'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
 VALUES ('417246e5-647e-476b-a850-9a1cd56f2fe4', 'Github', 'All the project related repositories.', '9acaf88f', 'https://github.com/prabal-es?tab=repositories', 'https://media.xconomy.com/wordpress/wp-content/images/2016/06/06161811/github-logo.jpg',
