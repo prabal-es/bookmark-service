@@ -9,7 +9,7 @@ CREATE TABLE T_COMPANY
 	ACTIVE			BOOLEAN,
 	PRIMARY KEY (UUID)
 );
-INSERT INTO T_COMPANY(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, URL, ACTIVE) VALUES ('629fab9a-0f46-4925-8e25-4037069f7dfd', 'Societe Generale', 'soc-gen', 'Société Générale S.A., often nicknamed "SocGen", is a French multinational investment bank and financial services company headquartered in Paris, France. The company is a universal bank and has divisions supporting French Networks, Global Transaction Banking, International Retail Banking, Financial Services, Corporate and Investment Banking, Private Banking, Asset Management and Securities Services.', 'https://arizent.brightspotcdn.com/1e/0d/50f4d8ae48c2bf67891ffd56fe05/societe-generale-bl-080415.jpg', 'https://www.societegenerale.com/en/home', true);
+INSERT INTO T_COMPANY(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, URL, ACTIVE) VALUES ('629fab9a-0f46-4925-8e25-4037069f7dfd', 'Google, LLC', 'google', 'Google, LLC is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware. It is considered one of the Big Four technology companies, alongside Amazon, Apple, and Microsoft.', 'https://media.xconomy.com/wordpress/wp-content/images/2015/08/06160438/Google-HQ-e1518800521672.jpg', 'https://en.wikipedia.org/wiki/Google', true);
 INSERT INTO T_COMPANY(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, URL, ACTIVE) VALUES (random_uuid(), 'ADP, LLC', 'adp', 'Automatic Data Processing, Inc., commonly known as ADP, is an American provider of human resources management software and services. ADP pays more than 36 million workers worldwide and serves more than 860,000 businesses from small business to global enterprise in 140 countries.', 'https://i0.wp.com/www.diversityinc.com/media/2020/06/ADP-Bilding.jpg?w=768&ssl=1', 'https://www.adp.in', false);
 INSERT INTO T_COMPANY(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, URL, ACTIVE) VALUES (random_uuid(), 'Hewlett-Packard', 'hp', 'The Hewlett-Packard Company, commonly shortened to Hewlett-Packard or HP was an American multinational information technology company headquartered in Palo Alto, California, that developed and provided a wide variety of hardware components, as well as software and related services to consumers, small and medium-sized businesses (SMBs) and large enterprises, including customers in the government, health and education sectors.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/HP_Headquarters_Palo_Alto.jpg/1024px-HP_Headquarters_Palo_Alto.jpg', 'https://www8.hp.com/in/en/home.html', false);
 
@@ -49,8 +49,8 @@ CREATE TABLE T_GROUP
 );
 
 INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('2cb44d2a-63b1-4aad-8957-44c3203bea76', 'RMO-SGL', 'rmo-sgl', 'RMO SGL Tribe Group.', 'https://reciprocitylabs.com/wp-content/uploads/2019/09/bigstock-Risk-management-in-word-tag-cl-21022796-768x584.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
-INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6e4cf9e1-8710-4f80-9aa5-3cd3bc0c58a9', 'Achilles', 'achilles', 'A feature team of conflict clearance.', 'https://adamnijhawan.weebly.com/uploads/3/8/0/6/38061047/980837259.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
-INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6c440055-7e30-4847-b446-22706895c9df', 'Engineering Stream', 'engineering-stream', 'On going hackathon.', 'https://engineering-stream-hackathon.github.io/challenge/img/engg_stream_hackathon.png', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
+INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6e4cf9e1-8710-4f80-9aa5-3cd3bc0c58a9', 'Achilles', 'achilles', 'A feature team of conflict clearance.', 'https://ae01.alicdn.com/kf/H1a2d24b226c04f258bfc9e6ef39f6bd4K/Medieval-Mediterranean-Ancient-Rome-Trojan-War-Arms-Shield-Memento-Wall-Hanging-Greek-mythology-Achilles-Spartan-Warrior.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
+INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6c440055-7e30-4847-b446-22706895c9df', 'Engineering Stream', 'engineering-stream', 'On going hackathon.', 'https://bookmark-9.herokuapp.com/assets/engg_stream_hackathon.png', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
 
 
 
@@ -86,7 +86,7 @@ VALUES (random_uuid(), null, null, '329ae1b5', 'https://dashboard.heroku.com/', 
 
 --Card
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
-VALUES ('29c1a1f4-96c5-4769-b37a-d39e6bff2afe', 'ES hackathon', 'Engineering stream hackathon problem statement', '811ec2f0', 'https://engineering-stream-hackathon.github.io/challenge/#/', 'https://engineering-stream-hackathon.github.io/challenge/img/engg_stream_hackathon.png',
+VALUES ('29c1a1f4-96c5-4769-b37a-d39e6bff2afe', 'ES hackathon', 'Engineering stream hackathon problem statement', '811ec2f0', 'https://engineering-stream-hackathon.github.io/challenge/#/', 'https://bookmark-9.herokuapp.com/assets/engg_stream_hackathon.png',
 'CARD', 1600166936000, null, true, '629fab9a-0f46-4925-8e25-4037069f7dfd', 'c17480ef-b7c3-4399-abbd-42b2aba7dfe6');
 INSERT INTO T_CARD(UUID, NAME, DESCRIPTION, TINY_URL, DETAIL_URL, IMG, TYPE, CREATED_AT, EXPIRE_AT, ACTIVE, COMAPNY_ID, USER_ID) 
 VALUES ('417246e5-647e-476b-a850-9a1cd56f2fe4', 'Github repositories', 'All the project related repositories.', '9acaf88f', 'https://github.com/prabal-es?tab=repositories', 'https://media.xconomy.com/wordpress/wp-content/images/2016/06/06161811/github-logo.jpg',

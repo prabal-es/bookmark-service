@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>bookmark-service</artifactId>
-		<groupId>com.socgen.bookmark</groupId>
+		<groupId>com.github.bookmark</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
@@ -13,7 +13,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.socgen.bookmark</groupId>
+			<groupId>com.github.bookmark</groupId>
 			<artifactId>bootstrap</artifactId>
 			<scope>test</scope>
 		</dependency>
