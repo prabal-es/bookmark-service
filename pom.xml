@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.socgen.bookmark</groupId>
+	<groupId>com.github.bookmark</groupId>
 	<artifactId>bookmark-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
@@ -14,16 +14,16 @@
 
 
 	<organization>
-		<name>Société Générale</name>
-		<url>https://www.societegenerale.com/en/home</url>
+		<name>Github</name>
+		<url>https://github.com/prabal-es</url>
 	</organization>
 	<url>https://www.prabalhub.com/</url>
 
 	<scm>
-		<url>scm:git:https://github.com/SocieteGeneraleES/bookmark-service.git</url>
-		<developerConnection>scm:git:https://github.com/SocieteGeneraleES/bookmark-service.git</developerConnection>
+		<url>scm:git:https://github.com/prabal-es/bookmark-service.git</url>
+		<developerConnection>scm:git:https://github.com/prabal-es/bookmark-service.git</developerConnection>
 		<tag>master</tag>
-		<connection>https://github.com/SocieteGeneraleES/bookmark-service/tree/${project.scm.tag}</connection>
+		<connection>https://github.com/prabal-es/bookmark-service/tree/${project.scm.tag}</connection>
 	</scm>
 
 	<issueManagement>
@@ -71,27 +71,27 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>com.socgen.bookmark</groupId>
+				<groupId>com.github.bookmark</groupId>
 				<artifactId>bootstrap</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.socgen.bookmark</groupId>
+				<groupId>com.github.bookmark</groupId>
 				<artifactId>domain-api</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.socgen.bookmark</groupId>
+				<groupId>com.github.bookmark</groupId>
 				<artifactId>rest-adapter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.socgen.bookmark</groupId>
+				<groupId>com.github.bookmark</groupId>
 				<artifactId>domain</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.socgen.bookmark</groupId>
+				<groupId>com.github.bookmark</groupId>
 				<artifactId>jpa-adapter</artifactId>
 				<version>${project.version}</version>
 			</dependency>

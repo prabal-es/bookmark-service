@@ -88,7 +88,7 @@ For this service we are having 5 rest definition:
 - **Build Packages**: https://github.com/prabal-es/bookmark-service/packages
 - Dependent UI project GitHub URL[**Bookmark UI**]: https://github.com/prabal-es/bookmark-ui
 - Dependent UI project **running** link: https://bookmark-9.herokuapp.com
-- *Clickup URL** [For story traking]: https://app.clickup.com/3319214/v/l/359de-18?pr=3327372
+- **Clickup URL** [For story traking]: https://app.clickup.com/3319214/v/l/359de-18?pr=3327372
 
 > Note: Heroku Dyno shutdown if not in use. So First time when you hit the running app it will take longer time but once the Dyno starts it will run fine.
 > Heroku Dyno JVM is running on 128 MB due to memory leak issue.
