@@ -48,8 +48,8 @@ CREATE TABLE T_GROUP
 	FOREIGN KEY 	(COMAPNY_ID) REFERENCES T_COMPANY(UUID)
 );
 
-INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('2cb44d2a-63b1-4aad-8957-44c3203bea76', 'RMO-SGL', 'rmo-sgl', 'RMO SGL Tribe Group.', 'https://reciprocitylabs.com/wp-content/uploads/2019/09/bigstock-Risk-management-in-word-tag-cl-21022796-768x584.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
-INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6e4cf9e1-8710-4f80-9aa5-3cd3bc0c58a9', 'Achilles', 'achilles', 'A feature team of conflict clearance.', 'https://ae01.alicdn.com/kf/H1a2d24b226c04f258bfc9e6ef39f6bd4K/Medieval-Mediterranean-Ancient-Rome-Trojan-War-Arms-Shield-Memento-Wall-Hanging-Greek-mythology-Achilles-Spartan-Warrior.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
+INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('2cb44d2a-63b1-4aad-8957-44c3203bea76', 'Risk Management', 'rm', 'Risk Management Group.', 'https://reciprocitylabs.com/wp-content/uploads/2019/09/bigstock-Risk-management-in-word-tag-cl-21022796-768x584.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
+INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6e4cf9e1-8710-4f80-9aa5-3cd3bc0c58a9', 'FireFly', 'firefly', 'A feature team', 'https://cff2.earth.com/uploads/2018/07/16131005/Your-summertime-guide-to-enjoying-the-magic-of-fireflies-768x432.jpg', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
 INSERT INTO T_GROUP(UUID, NAME, URL_CONTEXT, DESCRIPTION, IMG, ACTIVE, COMAPNY_ID) VALUES ('6c440055-7e30-4847-b446-22706895c9df', 'Engineering Stream', 'engineering-stream', 'On going hackathon.', 'https://bookmark-9.herokuapp.com/assets/engg_stream_hackathon.png', true, '629fab9a-0f46-4925-8e25-4037069f7dfd');
 
 
